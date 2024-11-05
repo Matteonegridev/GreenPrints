@@ -1,6 +1,7 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import RootLayout from "./Components/RootLayout";
-import ErrorPage from "./Components/ErrorPage";
+import RootLayout from "./Components/Routes/RootLayout";
+import ErrorPage from "./Components/Routes/ErrorPage";
+import AirportForm from "./Components/AirportForm";
 
 function App() {
   const router = createBrowserRouter([
@@ -8,6 +9,12 @@ function App() {
       path: "/",
       element: <RootLayout />,
       errorElement: <ErrorPage />,
+      children: [
+        {
+          path: "index",
+          element: <AirportForm />,
+        },
+      ],
     },
   ]);
 

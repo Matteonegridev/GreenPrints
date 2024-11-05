@@ -1,11 +1,13 @@
 import { Outlet } from "react-router-dom";
+import Navbar from "../Navbar";
+import Footer from "../Footer";
 
-type Props = {};
-
-function RootLayout({}: Props) {
+function RootLayout() {
   return (
     <div>
+      <Navbar />
       <Outlet />
+      <Footer />
     </div>
   );
 }
