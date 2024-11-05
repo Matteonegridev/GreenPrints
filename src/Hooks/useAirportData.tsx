@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { useDebounce } from "use-debounce";
 
 const getAirportData = async () => {
   const url = import.meta.env.VITE_AIRPORT_URL;
@@ -10,7 +11,7 @@ const getAirportData = async () => {
 };
 
 type Airport = {
-  city: string;
+  country: string;
   name: string;
   code: string;
 };
@@ -18,6 +19,7 @@ type Airport = {
 const useAirportData = () => {
   const [search, setSearch] = useState<string>("");
   const [suggestions, setSuggestions] = useState<Airport[]>([]);
+  const [searchDebounce] = useDebounce(search, 1000);
 
   const { data, isLoading, error } = useQuery({
     queryKey: ["airports"],
@@ -27,7 +29,7 @@ const useAirportData = () => {
     gcTime: 1000 * 30,
     select: (data) => {
       const resultData = data.map((value: Airport) => ({
-        city: value.city,
+        country: value.country,
         name: value.name,
         code: value.code,
       }));
@@ -37,8 +39,11 @@ const useAirportData = () => {
 
   useEffect(() => {
     if (data) {
-      const filteredElements = data.filter((values: Airport) =>
-        values.city.toLowerCase().includes(search.toLowerCase())
+      const filteredElements = data.filter(
+        (values: Airport) =>
+          values.name.toLowerCase().includes(search.toLowerCase()) ||
+          values.country.toLowerCase().includes(search.toLowerCase()) ||
+          values.code.toLowerCase().includes(search.toLowerCase())
       );
       // I dati sono immagazzinati in suggestions:
       setSuggestions(filteredElements);
@@ -49,12 +54,13 @@ const useAirportData = () => {
       setSuggestions([]);
       return;
     }
-  }, [data, search]);
+  }, [data, searchDebounce, search]);
 
   return {
     isLoading,
-    error,
     search,
+    error,
+    searchDebounce,
     setSearch,
     suggestions,
     setSuggestions,

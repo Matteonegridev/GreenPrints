@@ -5,7 +5,7 @@ type InputProps = {
   placeholder: string;
   value: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  airportData: { city: string; code: string; name: string }[];
+  airportData: { country: string; code: string; name: string }[];
   onClick: (e: React.MouseEvent<HTMLUListElement>) => void;
 };
 
