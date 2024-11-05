@@ -11,10 +11,14 @@ function App() {
       errorElement: <ErrorPage />,
       children: [
         {
-          path: "index",
+          index: true,
           element: <AirportForm />,
         },
       ],
+    },
+    {
+      path: "*",
+      element: <ErrorPage />,
     },
   ]);
 

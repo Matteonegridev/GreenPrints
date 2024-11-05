@@ -5,7 +5,7 @@ type InputProps = {
   placeholder: string;
   value: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  suggestions: { city: string; code: string; name: string }[];
+  airportData: { city: string; code: string; name: string }[];
   onClick: (e: React.MouseEvent<HTMLUListElement>) => void;
 };
 
@@ -14,7 +14,7 @@ function AirportInput({
   placeholder,
   value,
   onChange,
-  suggestions,
+  airportData,
   onClick,
 }: InputProps) {
   return (
@@ -29,7 +29,7 @@ function AirportInput({
         className="px-1 outline-none border border-black"
       />
       <ul onClick={onClick}>
-        <ElementLists filteredElements={suggestions} />
+        <ElementLists filteredElements={airportData} />
       </ul>
     </>
   );

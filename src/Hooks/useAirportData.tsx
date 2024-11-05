@@ -23,18 +23,21 @@ const useAirportData = () => {
     queryKey: ["airports"],
     queryFn: getAirportData,
     refetchOnWindowFocus: false,
+    staleTime: 1000 * 30,
     gcTime: 1000 * 30,
-    select: (data) =>
-      data.map((value: Airport) => ({
+    select: (data) => {
+      const resultData = data.map((value: Airport) => ({
         city: value.city,
         name: value.name,
         code: value.code,
-      })),
+      }));
+      return resultData;
+    },
   });
 
   useEffect(() => {
     if (data) {
-      const filteredElements = data.map((values: Airport) =>
+      const filteredElements = data.filter((values: Airport) =>
         values.city.toLowerCase().includes(search.toLowerCase())
       );
       // I dati sono immagazzinati in suggestions:
