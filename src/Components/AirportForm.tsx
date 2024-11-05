@@ -1,10 +1,17 @@
+import useAirportData from "../Hooks/useAirportData";
 import AirportInput from "./AirportInput";
 
-type Props = {};
+function AirportForm() {
+  const { data: airport } = useAirportData;
 
-function AirportForm({}: Props) {
-  const handleClickFromList = () => {};
-  const handleChangeList = () => {};
+  const handleClickFromList = (e: React.MouseEvent<HTMLUListElement>) => {
+    const target = e.target as HTMLElement;
+
+    if (target.tagName === "LI") {
+      console.log("clicked on: ", target.textContent);
+    }
+  };
+  const handleChangeList = (e) => {};
   return (
     <div>
       <form action="">
@@ -14,7 +21,7 @@ function AirportForm({}: Props) {
           onChange={}
           value={}
           suggestions={}
-          onClick={}
+          onClick={handleClickFromList}
         />
       </form>
     </div>
