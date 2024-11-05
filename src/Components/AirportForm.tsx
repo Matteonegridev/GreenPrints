@@ -1,12 +1,11 @@
 import useAirportData from "../Hooks/useAirportData";
 import AirportInput from "./AirportInput";
-import ErrorPage from "./Routes/ErrorPage";
 
 function AirportForm() {
   const { search, suggestions, setSearch, isLoading, error } = useAirportData();
 
   if (isLoading) return <p>Loading...</p>;
-  if (error) return <ErrorPage />;
+  if (error) return <p>Something has occurred...</p>;
 
   const handleClickFromList = (e: React.MouseEvent<HTMLUListElement>) => {
     const target = e.target as HTMLElement;
