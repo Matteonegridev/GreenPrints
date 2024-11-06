@@ -40,10 +40,10 @@ const useAirportData = () => {
   useEffect(() => {
     if (data) {
       const filteredElements = data.filter(
-        (values: Airport) =>
-          values.name.toLowerCase().includes(search.toLowerCase()) ||
-          values.country.toLowerCase().includes(search.toLowerCase()) ||
-          values.code.toLowerCase().includes(search.toLowerCase())
+        (values: Airport, query: string) =>
+          values.name.toLowerCase().includes(query.toLowerCase()) ||
+          values.country.toLowerCase().includes(query.toLowerCase()) ||
+          values.code.toLowerCase().includes(query.toLowerCase())
       );
       // I dati sono immagazzinati in suggestions:
       setSuggestions(filteredElements);
