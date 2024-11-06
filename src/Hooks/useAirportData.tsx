@@ -1,7 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import { useEffect, useState } from "react";
-import { useDebounce } from "use-debounce";
 
 const getAirportData = async () => {
   const url = import.meta.env.VITE_AIRPORT_URL;
@@ -10,17 +8,13 @@ const getAirportData = async () => {
   return result.data;
 };
 
-type Airport = {
+export type Airport = {
   country: string;
   name: string;
   code: string;
 };
 
 const useAirportData = () => {
-  const [search, setSearch] = useState<string>("");
-  const [suggestions, setSuggestions] = useState<Airport[]>([]);
-  const [searchDebounce] = useDebounce(search, 1000);
-
   const { data, isLoading, error } = useQuery({
     queryKey: ["airports"],
     queryFn: getAirportData,
@@ -37,33 +31,10 @@ const useAirportData = () => {
     },
   });
 
-  useEffect(() => {
-    if (data) {
-      const filteredElements = data.filter(
-        (values: Airport, query: string) =>
-          values.name.toLowerCase().includes(query.toLowerCase()) ||
-          values.country.toLowerCase().includes(query.toLowerCase()) ||
-          values.code.toLowerCase().includes(query.toLowerCase())
-      );
-      // I dati sono immagazzinati in suggestions:
-      setSuggestions(filteredElements);
-    } else {
-      setSuggestions([]);
-    }
-    if (search.trim() === "") {
-      setSuggestions([]);
-      return;
-    }
-  }, [data, searchDebounce, search]);
-
   return {
     isLoading,
-    search,
     error,
-    searchDebounce,
-    setSearch,
-    suggestions,
-    setSuggestions,
+    data,
   };
 };
 
