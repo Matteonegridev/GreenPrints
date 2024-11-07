@@ -34,8 +34,6 @@ function AirportForm() {
       handleFilterItems(data, debounceOrigin, "origin");
 
       console.log(debounceOrigin);
-    } else {
-      setSuggestions((prev) => ({ ...prev, origin: [] }));
     }
   }, [data, debounceOrigin]);
 
@@ -43,8 +41,6 @@ function AirportForm() {
   useEffect(() => {
     if (debounceDestination) {
       handleFilterItems(data, debounceDestination, "destination");
-    } else {
-      setSuggestions((prev) => ({ ...prev, destination: [] }));
     }
   }, [data, debounceDestination]);
 
@@ -53,7 +49,7 @@ function AirportForm() {
 
   // funzione filter passata allo useEffect in modo da poter utilizzare il debounce:
   const handleFilterItems = (
-    data: Airport,
+    data: Airport[],
     query: string,
     type: "origin" | "destination"
   ) => {
@@ -63,39 +59,29 @@ function AirportForm() {
       return;
     }
 
-    const filteredElements = Array.isArray(data)
-      ? data.filter(
-          (values: Airport) =>
-            values.name.toLowerCase().includes(trimmedQuery.toLowerCase()) ||
-            values.country.toLowerCase().includes(trimmedQuery.toLowerCase()) ||
-            values.code.toLowerCase().includes(trimmedQuery.toLowerCase())
-        )
-      : [];
-
+    const filteredElements = data.filter(
+      (values: Airport) =>
+        values.name.toLowerCase().includes(trimmedQuery.toLowerCase()) ||
+        values.country.toLowerCase().includes(trimmedQuery.toLowerCase()) ||
+        values.code.toLowerCase().includes(trimmedQuery.toLowerCase())
+    );
     setSuggestions((prev) => ({ ...prev, [type]: filteredElements }));
   };
 
-  const handleClickFromListOrigin = (e: React.MouseEvent<HTMLUListElement>) => {
-    const li = (e.target as HTMLElement).closest("li");
-    if (li) {
-      const searchItem = li.textContent;
-      console.log("clicked: ", searchItem);
-      setOriginSearch(searchItem || "");
-      setOrigin(searchItem || "");
-      setSuggestions((prev) => ({ ...prev, origin: [] }));
-    }
-  };
-
-  const handleClickFromListDestination = (
-    e: React.MouseEvent<HTMLUListElement>
+  const handleClickFromList = (
+    e: React.MouseEvent<HTMLUListElement>,
+    setSearch: React.Dispatch<React.SetStateAction<string>>,
+    setTravel: React.Dispatch<React.SetStateAction<string>>,
+    type: "origin" | "destination"
   ) => {
     const li = (e.target as HTMLElement).closest("li");
     if (li) {
       const searchItem = li.textContent;
       console.log("clicked: ", searchItem);
-      setDestinationSearch(searchItem || "");
-      setDestination(searchItem || "");
-      setSuggestions((prev) => ({ ...prev, destination: [] }));
+      setSearch(searchItem || "");
+      setTravel(searchItem || "");
+      // smoother clearing dei campi:
+      setSuggestions((prev) => ({ ...prev, [type]: [] }));
     }
   };
 
@@ -118,7 +104,9 @@ function AirportForm() {
           onChange={handleChangeOrigin}
           value={originSearch}
           airportData={suggestions.origin}
-          onClick={handleClickFromListOrigin}
+          onClick={(e) =>
+            handleClickFromList(e, setOriginSearch, setOrigin, "origin")
+          }
         />
         <AirportInput
           placeholder="Enter arrival airport"
@@ -126,7 +114,14 @@ function AirportForm() {
           onChange={handleChangeDestination}
           value={destinationSearch}
           airportData={suggestions.destination}
-          onClick={handleClickFromListDestination}
+          onClick={(e) =>
+            handleClickFromList(
+              e,
+              setDestinationSearch,
+              setDestination,
+              "destination"
+            )
+          }
         />
       </form>
     </div>
