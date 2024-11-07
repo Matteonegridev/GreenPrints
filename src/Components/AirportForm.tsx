@@ -18,6 +18,7 @@ function AirportForm() {
   const [originSearch, setOriginSearch] = useState("");
   const [destinationSearch, setDestinationSearch] = useState("");
   const [passengers, setPassengers] = useState(1);
+  const [footprint, setFootprint] = useState(null);
   const [debounceOrigin] = useDebounce(originSearch, 200);
   const [debounceDestination] = useDebounce(destinationSearch, 200);
 
@@ -77,9 +78,10 @@ function AirportForm() {
     const li = (e.target as HTMLElement).closest("li");
     if (li) {
       const searchItem = li.textContent;
+      const code = searchItem?.split(" ").pop();
       console.log("clicked: ", searchItem);
       setSearch(searchItem || "");
-      setTravel(searchItem || "");
+      setTravel(code || "");
       // smoother clearing dei campi:
       setSuggestions((prev) => ({ ...prev, [type]: [] }));
     }
@@ -123,6 +125,7 @@ function AirportForm() {
             )
           }
         />
+        <p>{footprint}</p>
       </form>
     </div>
   );

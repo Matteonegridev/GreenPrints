@@ -49,6 +49,9 @@ const useClimateData = (
     enabled: !!origin && !!destination,
   });
 
+  //todo: useMutation per calcolare il footprint con piu passeggeri:
+  // codice qui...
+
   return { data, isLoading, error };
 };
 
