@@ -4,6 +4,8 @@ import useAirportData from "../Hooks/useAirportData";
 import useClimateData from "../Hooks/useClimateData";
 import AirportInput from "./AirportInput";
 import { useDebounce } from "use-debounce";
+import useKeyEvent from "../Hooks/useKeyEvent";
+import ElementLists from "./ElementLists";
 
 function AirportForm() {
   const [origin, setOrigin] = useState("");
@@ -18,7 +20,6 @@ function AirportForm() {
   const [originSearch, setOriginSearch] = useState("");
   const [destinationSearch, setDestinationSearch] = useState("");
   const [passengers, setPassengers] = useState(1);
-  const [footprint, setFootprint] = useState(null);
   const [debounceOrigin] = useDebounce(originSearch, 200);
   const [debounceDestination] = useDebounce(destinationSearch, 200);
 
@@ -29,12 +30,17 @@ function AirportForm() {
     data: climatedata,
   } = useClimateData(origin, destination, passengers);
 
+  const { handleKeyEvent } = useKeyEvent();
+
   // useEffect per il debounce cosi che il dato è richiamato quando si smette di scrivere:
   useEffect(() => {
     if (debounceOrigin) {
       handleFilterItems(data, debounceOrigin, "origin");
 
       console.log(debounceOrigin);
+    } else {
+      // cancellato tutto dall'input la lista scompare:
+      setSuggestions((prev) => ({ ...prev, origin: [] }));
     }
   }, [data, debounceOrigin]);
 
@@ -42,6 +48,9 @@ function AirportForm() {
   useEffect(() => {
     if (debounceDestination) {
       handleFilterItems(data, debounceDestination, "destination");
+    } else {
+      // cancellato tutto dall'input la lista scompare:
+      setSuggestions((prev) => ({ ...prev, destination: [] }));
     }
   }, [data, debounceDestination]);
 
@@ -87,14 +96,16 @@ function AirportForm() {
     }
   };
 
-  const handleChangeOrigin = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    type: "origin" | "destination"
+  ) => {
     const value = e.target.value;
-    setOriginSearch(value);
-  };
-
-  const handleChangeDestination = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value;
-    setDestinationSearch(value);
+    if (type === "origin") {
+      setOriginSearch(value);
+    } else {
+      setDestinationSearch(value);
+    }
   };
 
   return (
@@ -103,17 +114,27 @@ function AirportForm() {
         <AirportInput
           placeholder="Enter departure airport"
           text="From:"
-          onChange={handleChangeOrigin}
+          onChange={(e) => handleInputChange(e, "origin")}
           value={originSearch}
           airportData={suggestions.origin}
           onClick={(e) =>
             handleClickFromList(e, setOriginSearch, setOrigin, "origin")
           }
+          onKeyDown={(e) =>
+            handleKeyEvent(
+              e,
+              suggestions.origin,
+              setOriginSearch,
+              setOrigin,
+              setSuggestions,
+              "origin"
+            )
+          }
         />
         <AirportInput
           placeholder="Enter arrival airport"
           text="To:"
-          onChange={handleChangeDestination}
+          onChange={(e) => handleInputChange(e, "destination")}
           value={destinationSearch}
           airportData={suggestions.destination}
           onClick={(e) =>
@@ -124,8 +145,17 @@ function AirportForm() {
               "destination"
             )
           }
+          onKeyDown={(e) =>
+            handleKeyEvent(
+              e,
+              suggestions.destination,
+              setDestinationSearch,
+              setDestination,
+              setSuggestions,
+              "destination"
+            )
+          }
         />
-        <p>{footprint}</p>
       </form>
     </div>
   );

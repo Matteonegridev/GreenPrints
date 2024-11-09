@@ -7,6 +7,7 @@ type InputProps = {
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   airportData: { country: string; code: string; name: string }[];
   onClick: (e: React.MouseEvent<HTMLUListElement>) => void;
+  onKeyDown: (e: React.KeyboardEvent<HTMLInputElement>) => void;
 };
 
 function AirportInput({
@@ -16,6 +17,7 @@ function AirportInput({
   onChange,
   airportData,
   onClick,
+  onKeyDown,
 }: InputProps) {
   return (
     <>
@@ -26,7 +28,8 @@ function AirportInput({
         placeholder={placeholder}
         value={value}
         onChange={onChange}
-        className="px-1 outline-none border border-black"
+        onKeyDown={onKeyDown}
+        className="px-1 outline-none border"
       />
       <ul onClick={onClick}>
         <ElementLists filteredElements={airportData} />

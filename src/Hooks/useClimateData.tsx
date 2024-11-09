@@ -43,6 +43,7 @@ const useClimateData = (
   destination: string,
   passengers: number
 ) => {
+  // const [footprint, setFootprint] = useState(null);
   const { data, isLoading, error } = useQuery({
     queryKey: ["climateData", { origin, destination, passengers }],
     queryFn: () => getClimateData({ origin, destination, passengers }),
