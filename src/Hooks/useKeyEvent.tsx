@@ -1,30 +1,25 @@
-// keyboard events:
-import { SetStateAction, useState } from "react";
-import { type Airport } from "../Hooks/useAirportData";
+import { useState } from "react";
+import { Airport } from "../Hooks/useAirportData"; // Assuming Airport type is imported
 
-const useKeyEvent = () => {
+// Custom hook for handling key events
+const useKeyEvent = (
+  suggestions: Airport[],
+  setSearch: React.Dispatch<React.SetStateAction<string>>,
+  setTravel: React.Dispatch<React.SetStateAction<string>>,
+  setSuggestions: React.Dispatch<
+    React.SetStateAction<{ origin: Airport[]; destination: Airport[] }>
+  >,
+  type: "origin" | "destination"
+) => {
   const [selectedItem, setSelectedItem] = useState<number>(-1);
 
-  const handleKeyEvent = (
-    e: React.KeyboardEvent<HTMLElement>,
-    suggestions: Airport[],
-    setSearch: React.Dispatch<React.SetStateAction<string>>,
-    setTravel: React.Dispatch<React.SetStateAction<string>>,
-    setSuggestions: React.Dispatch<
-      SetStateAction<{ origin: Airport[]; destination: Airport[] }>
-    >,
-    type: "origin" | "destination"
-  ) => {
+  const handleKeyEvent = (e: React.KeyboardEvent<HTMLElement>) => {
     const totalSuggestions = suggestions.length;
 
     switch (e.key) {
       case "ArrowDown":
         if (totalSuggestions > 0) {
           setSelectedItem((prev) => (prev + 1) % totalSuggestions);
-          console.log(
-            "Arrow down, index:",
-            (selectedItem + 1) % totalSuggestions
-          );
         }
         break;
 
@@ -32,10 +27,6 @@ const useKeyEvent = () => {
         if (selectedItem > 0) {
           setSelectedItem(
             (prev) => (prev - 1 + totalSuggestions) % totalSuggestions
-          );
-          console.log(
-            "Arrow up , index:",
-            (selectedItem - 1) % totalSuggestions
           );
         }
         break;
@@ -49,15 +40,13 @@ const useKeyEvent = () => {
 
           setSearch(searchItem);
           setTravel(code);
-
-          setSelectedItem(-1); // Deselect after pressing Enter
-          setSuggestions((prev) => ({ ...prev, [type]: [] })); // Clear suggestions
+          setSelectedItem(-1);
+          setSuggestions((prev) => ({ ...prev, [type]: [] }));
         }
         break;
 
       case "Escape":
         setSelectedItem(-1);
-        console.log("Escape pressed, deselected item.");
         break;
 
       default:
@@ -65,7 +54,7 @@ const useKeyEvent = () => {
     }
   };
 
-  return { handleKeyEvent, selectedItem };
+  return { selectedItem, handleKeyEvent };
 };
 
 export default useKeyEvent;

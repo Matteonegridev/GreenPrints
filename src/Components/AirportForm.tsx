@@ -4,8 +4,6 @@ import useAirportData from "../Hooks/useAirportData";
 import useClimateData from "../Hooks/useClimateData";
 import AirportInput from "./AirportInput";
 import { useDebounce } from "use-debounce";
-import useKeyEvent from "../Hooks/useKeyEvent";
-import ElementLists from "./ElementLists";
 
 function AirportForm() {
   const [origin, setOrigin] = useState("");
@@ -29,8 +27,6 @@ function AirportForm() {
     error: err,
     data: climatedata,
   } = useClimateData(origin, destination, passengers);
-
-  const { handleKeyEvent } = useKeyEvent();
 
   // useEffect per il debounce cosi che il dato è richiamato quando si smette di scrivere:
   useEffect(() => {
@@ -112,46 +108,34 @@ function AirportForm() {
     <div>
       <form action="">
         <AirportInput
+          setSearch={setOriginSearch}
+          setTravel={setOrigin}
+          setSuggestions={setSuggestions}
+          type="origin"
           placeholder="Enter departure airport"
           text="From:"
-          onChange={(e) => handleInputChange(e, "origin")}
           value={originSearch}
           airportData={suggestions.origin}
+          onChange={(e) => handleInputChange(e, "origin")}
           onClick={(e) =>
             handleClickFromList(e, setOriginSearch, setOrigin, "origin")
-          }
-          onKeyDown={(e) =>
-            handleKeyEvent(
-              e,
-              suggestions.origin,
-              setOriginSearch,
-              setOrigin,
-              setSuggestions,
-              "origin"
-            )
           }
         />
         <AirportInput
           placeholder="Enter arrival airport"
           text="To:"
-          onChange={(e) => handleInputChange(e, "destination")}
           value={destinationSearch}
           airportData={suggestions.destination}
+          setSearch={setDestinationSearch}
+          setTravel={setDestination}
+          setSuggestions={setSuggestions}
+          type="destination"
+          onChange={(e) => handleInputChange(e, "destination")}
           onClick={(e) =>
             handleClickFromList(
               e,
               setDestinationSearch,
               setDestination,
-              "destination"
-            )
-          }
-          onKeyDown={(e) =>
-            handleKeyEvent(
-              e,
-              suggestions.destination,
-              setDestinationSearch,
-              setDestination,
-              setSuggestions,
               "destination"
             )
           }

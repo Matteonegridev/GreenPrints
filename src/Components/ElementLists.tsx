@@ -1,22 +1,28 @@
-import useKeyEvent from "../Hooks/useKeyEvent";
+import { useState } from "react";
 
 type ListProps = {
   filteredElements: { name: string; country: string; code: string }[];
+  selectedItem: number;
 };
 
-function ElementLists({ filteredElements }: ListProps) {
-  const { selectedItem } = useKeyEvent();
+function ElementLists({ filteredElements, selectedItem }: ListProps) {
+  console.log("Selected Item: ", selectedItem);
+  const [hovered, setHovered] = useState(-1);
+
   return (
     <>
       {filteredElements.length > 0 &&
         filteredElements.map((item, i) => (
           <li
-            className={`p-2 cursor-pointer text-sm hover:bg-green-500 ${
-              selectedItem === i
-                ? "bg-green-500 text-white"
-                : "hover:bg-green-500"
-            }`}
+            className="p-2 cursor-pointer text-sm"
+            style={{
+              backgroundColor:
+                selectedItem === i || hovered === i ? "green" : "",
+              color: selectedItem === i || hovered === i ? "white" : "",
+            }}
             key={i}
+            onMouseEnter={() => setHovered(i)}
+            onMouseLeave={() => setHovered(-1)}
           >
             {item.country} - {item.name} {item.code}
           </li>
