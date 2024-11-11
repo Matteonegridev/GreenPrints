@@ -20,6 +20,11 @@ function AirportForm() {
   const [passengers, setPassengers] = useState(1);
   const [debounceOrigin] = useDebounce(originSearch, 200);
   const [debounceDestination] = useDebounce(destinationSearch, 200);
+  const [isCalculated, setIsCalculated] = useState<boolean>(false);
+  const fieldNotEmpty =
+    originSearch.trim() !== "" &&
+    destinationSearch.trim() !== "" &&
+    passengers > 0;
 
   const { data, isLoading, error } = useAirportData();
   const {
@@ -27,6 +32,8 @@ function AirportForm() {
     error: err,
     data: climateData,
   } = useClimateData(origin, destination, passengers);
+
+  const totalFootprint = (climateData?.footprint / 1000) * passengers;
 
   // useEffect per il debounce cosi che il dato è richiamato quando si smette di scrivere:
   useEffect(() => {
@@ -77,16 +84,14 @@ function AirportForm() {
   const handleClickFromList = (
     e: React.MouseEvent<HTMLUListElement>,
     setSearch: React.Dispatch<React.SetStateAction<string>>,
-    setCode: React.Dispatch<React.SetStateAction<string>>,
     type: "origin" | "destination"
   ) => {
     const li = (e.target as HTMLElement).closest("li");
     if (li) {
       const searchItem = li.textContent;
-      const code = searchItem?.split(" ").pop();
       console.log("clicked: ", searchItem);
+      // inserisce il valore nel campo di ricerca:
       setSearch(searchItem || "");
-      setCode(code || "");
       // smoother clearing dei campi:
       setSuggestions((prev) => ({ ...prev, [type]: [] }));
     }
@@ -103,23 +108,32 @@ function AirportForm() {
       setDestinationSearch(value);
     }
   };
+  const handleCode = (
+    setDestination: React.Dispatch<React.SetStateAction<string>>,
+    setOrigin: React.Dispatch<React.SetStateAction<string>>,
+    e: React.MouseEvent<HTMLButtonElement>
+  ) => {
+    e.preventDefault();
+    const toCode = destinationSearch?.split(" ").pop();
+    const fromCode = originSearch?.split(" ").pop();
+    setDestination(toCode || "");
+    setOrigin(fromCode || "");
+    if (!isCalculated) setIsCalculated(true);
+  };
 
   return (
-    <div>
-      <form action="">
+    <>
+      <section>
         <AirportInput
-          setSearch={setOriginSearch}
-          setCode={setOrigin}
-          setSuggestions={setSuggestions}
-          type="origin"
           placeholder="Enter departure airport"
           text="From:"
           value={originSearch}
           airportData={suggestions.origin}
+          setSearch={setOriginSearch}
+          setSuggestions={setSuggestions}
+          type="origin"
           onChange={(e) => handleInputChange(e, "origin")}
-          onClick={(e) =>
-            handleClickFromList(e, setOriginSearch, setOrigin, "origin")
-          }
+          onClick={(e) => handleClickFromList(e, setOriginSearch, "origin")}
         />
         <AirportInput
           placeholder="Enter arrival airport"
@@ -127,23 +141,24 @@ function AirportForm() {
           value={destinationSearch}
           airportData={suggestions.destination}
           setSearch={setDestinationSearch}
-          setCode={setDestination}
           setSuggestions={setSuggestions}
           type="destination"
           onChange={(e) => handleInputChange(e, "destination")}
           onClick={(e) =>
-            handleClickFromList(
-              e,
-              setDestinationSearch,
-              setDestination,
-              "destination"
-            )
+            handleClickFromList(e, setDestinationSearch, "destination")
           }
         />
-        <button>Calculate</button>
-        <p>Estimated Footprint: {climateData?.footprint / 1000} tonnes CO2e</p>
-      </form>
-    </div>
+        <button
+          disabled={isCalculated || !fieldNotEmpty}
+          onClick={(e) => handleCode(setDestination, setOrigin, e)}
+        >
+          Calculate
+        </button>
+        {isCalculated && (
+          <p>Estimated Footprint: {totalFootprint} tonnes CO2e</p>
+        )}
+      </section>
+    </>
   );
 }
 

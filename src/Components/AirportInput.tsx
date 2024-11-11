@@ -11,7 +11,6 @@ type InputProps = {
   airportData: { country: string; code: string; name: string }[];
   onClick: (e: React.MouseEvent<HTMLUListElement>) => void;
   setSearch: React.Dispatch<React.SetStateAction<string>>;
-  setCode: React.Dispatch<React.SetStateAction<string>>;
   setSuggestions: React.Dispatch<
     SetStateAction<{ origin: Airport[]; destination: Airport[] }>
   >;
@@ -26,14 +25,12 @@ function AirportInput({
   onClick,
   airportData,
   setSearch,
-  setCode,
   setSuggestions,
   type,
 }: InputProps) {
   const { selectedItem, handleKeyEvent } = useKeyEvent(
     airportData,
     setSearch,
-    setCode,
     setSuggestions,
     type
   );
@@ -42,6 +39,7 @@ function AirportInput({
     <>
       <label htmlFor="airportInput">{text}</label>
       <input
+        autoComplete="off"
         id="airportInput"
         tabIndex={0}
         required

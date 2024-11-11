@@ -6,7 +6,6 @@ type ListProps = {
 };
 
 function ElementLists({ filteredElements, selectedItem }: ListProps) {
-  console.log("Selected Item: ", selectedItem);
   const [hovered, setHovered] = useState(-1);
 
   return (
