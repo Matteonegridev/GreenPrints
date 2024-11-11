@@ -77,7 +77,7 @@ function AirportForm() {
   const handleClickFromList = (
     e: React.MouseEvent<HTMLUListElement>,
     setSearch: React.Dispatch<React.SetStateAction<string>>,
-    setTravel: React.Dispatch<React.SetStateAction<string>>,
+    setCode: React.Dispatch<React.SetStateAction<string>>,
     type: "origin" | "destination"
   ) => {
     const li = (e.target as HTMLElement).closest("li");
@@ -86,7 +86,7 @@ function AirportForm() {
       const code = searchItem?.split(" ").pop();
       console.log("clicked: ", searchItem);
       setSearch(searchItem || "");
-      setTravel(code || "");
+      setCode(code || "");
       // smoother clearing dei campi:
       setSuggestions((prev) => ({ ...prev, [type]: [] }));
     }
@@ -109,7 +109,7 @@ function AirportForm() {
       <form action="">
         <AirportInput
           setSearch={setOriginSearch}
-          setTravel={setOrigin}
+          setCode={setOrigin}
           setSuggestions={setSuggestions}
           type="origin"
           placeholder="Enter departure airport"
@@ -127,7 +127,7 @@ function AirportForm() {
           value={destinationSearch}
           airportData={suggestions.destination}
           setSearch={setDestinationSearch}
-          setTravel={setDestination}
+          setCode={setDestination}
           setSuggestions={setSuggestions}
           type="destination"
           onChange={(e) => handleInputChange(e, "destination")}
