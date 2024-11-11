@@ -25,7 +25,7 @@ function AirportForm() {
   const {
     isLoading: load,
     error: err,
-    data: climatedata,
+    data: climateData,
   } = useClimateData(origin, destination, passengers);
 
   // useEffect per il debounce cosi che il dato è richiamato quando si smette di scrivere:
@@ -140,6 +140,8 @@ function AirportForm() {
             )
           }
         />
+        <button>Calculate</button>
+        <p>Estimated Footprint: {climateData?.footprint / 1000} tonnes CO2e</p>
       </form>
     </div>
   );
