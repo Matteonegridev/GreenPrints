@@ -30,11 +30,11 @@ function AirportInput({
   setSuggestion,
 }: InputProps) {
   const { selectedItem, handleKeyEvent } = useKeyEvent(
-    airportData,
     setCode,
     setSearch,
-    type,
-    setSuggestion
+    setSuggestion,
+    airportData, // suggestions
+    type
   );
   return (
     <>

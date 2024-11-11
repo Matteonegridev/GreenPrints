@@ -11,7 +11,17 @@ function ElementLists({ filteredElements, selectedItem }: ListProps) {
     <>
       {filteredElements.length > 0 &&
         filteredElements.map((item, i) => (
-          <li className="p-2 cursor-pointer  text-sm" key={i}>
+          <li
+            className="p-2 cursor-pointer text-sm"
+            style={{
+              backgroundColor:
+                selectedItem === i || hoveredItem === i ? "green" : "",
+              color: selectedItem === i || hoveredItem === i ? "white" : "",
+            }}
+            key={i}
+            onMouseEnter={() => setHoveredItem(i)}
+            onMouseLeave={() => setHoveredItem(-1)}
+          >
             {item.country} - {item.name} {item.code}
           </li>
         ))}

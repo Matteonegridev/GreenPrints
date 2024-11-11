@@ -114,10 +114,10 @@ function AirportForm() {
           }
         />
         <AirportInput
+          type="destination"
           setCode={setDestination}
           setSearch={setDestinationSearch}
           setSuggestion={setSuggestions}
-          type="destination"
           placeholder="Enter arrival airport"
           text="To:"
           onChange={handleChangeDestination}
