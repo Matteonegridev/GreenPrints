@@ -47,7 +47,7 @@ function AirportInput({
         value={value}
         onChange={onChange}
         onKeyDown={handleKeyEvent}
-        className="px-1 outline-none border border-black"
+        className="px-1 border-black border "
       />
       <ul onClick={onClick}>
         <ElementLists
