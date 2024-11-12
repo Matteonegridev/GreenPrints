@@ -143,37 +143,39 @@ function AirportForm() {
           passengers={passengers}
           setPassengers={setPassengers}
         />
-        <button
-          id="calculate"
-          disabled={isCalculated || !fieldNotEmpty}
-          onClick={(e) =>
-            handleCode(
-              setDestination,
-              setOrigin,
-              e,
-              originSearch,
-              destinationSearch,
-              isCalculated,
-              setIsCalculated
-            )
-          }
-        >
-          Calculate
-        </button>
-        <button
-          id="reset"
-          onClick={() =>
-            resetInputs(
-              setSuggestions,
-              setOriginSearch,
-              setDestinationSearch,
-              setIsCalculated,
-              setPassengers
-            )
-          }
-        >
-          Reset
-        </button>
+        <div>
+          <button
+            id="calculate"
+            disabled={isCalculated || !fieldNotEmpty}
+            onClick={(e) =>
+              handleCode(
+                setDestination,
+                setOrigin,
+                e,
+                originSearch,
+                destinationSearch,
+                isCalculated,
+                setIsCalculated
+              )
+            }
+          >
+            Calculate
+          </button>
+          <button
+            id="reset"
+            onClick={() =>
+              resetInputs(
+                setSuggestions,
+                setOriginSearch,
+                setDestinationSearch,
+                setIsCalculated,
+                setPassengers
+              )
+            }
+          >
+            Reset
+          </button>
+        </div>
         {isCalculated && (
           <p>Estimated Footprint: {totalFootprint} tonnes CO2e</p>
         )}
