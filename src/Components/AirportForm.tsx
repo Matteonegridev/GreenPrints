@@ -4,6 +4,7 @@ import useAirportData from "../Hooks/useAirportData";
 import useClimateData from "../Hooks/useClimateData";
 import AirportInput from "./AirportInput";
 import { useDebounce } from "use-debounce";
+import SelectPassenger from "./SelectPassenger";
 
 function AirportForm() {
   const [origin, setOrigin] = useState("");
@@ -21,6 +22,7 @@ function AirportForm() {
   const [debounceOrigin] = useDebounce(originSearch, 200);
   const [debounceDestination] = useDebounce(destinationSearch, 200);
   const [isCalculated, setIsCalculated] = useState<boolean>(false);
+  // calcola se i field non sono vuoti:
   const fieldNotEmpty =
     originSearch.trim() !== "" &&
     destinationSearch.trim() !== "" &&
@@ -154,6 +156,10 @@ function AirportForm() {
         >
           Calculate
         </button>
+        <SelectPassenger
+          passengers={passengers}
+          setPassengers={setPassengers}
+        />
         {isCalculated && (
           <p>Estimated Footprint: {totalFootprint} tonnes CO2e</p>
         )}
