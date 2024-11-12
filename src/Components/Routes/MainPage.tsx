@@ -4,7 +4,12 @@ function MainPage() {
   return (
     <div>
       mainpage
-      <Link to={"calculator"}>Navigate</Link>
+      <Link
+        className="block w-[10rem] py-2 text-center border border-black"
+        to={"calculator"}
+      >
+        Navigate
+      </Link>
     </div>
   );
 }
