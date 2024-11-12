@@ -5,6 +5,7 @@ import useClimateData from "../Hooks/useClimateData";
 import AirportInput from "./AirportInput";
 import { useDebounce } from "use-debounce";
 import SelectPassenger from "./SelectPassenger";
+import { handleCode, resetInputs } from "../Utils/Functions";
 
 function AirportForm() {
   const [origin, setOrigin] = useState("");
@@ -110,18 +111,6 @@ function AirportForm() {
       setDestinationSearch(value);
     }
   };
-  const handleCode = (
-    setDestination: React.Dispatch<React.SetStateAction<string>>,
-    setOrigin: React.Dispatch<React.SetStateAction<string>>,
-    e: React.MouseEvent<HTMLButtonElement>
-  ) => {
-    e.preventDefault();
-    const toCode = destinationSearch?.split(" ").pop();
-    const fromCode = originSearch?.split(" ").pop();
-    setDestination(toCode || "");
-    setOrigin(fromCode || "");
-    if (!isCalculated) setIsCalculated(true);
-  };
 
   return (
     <>
@@ -150,16 +139,41 @@ function AirportForm() {
             handleClickFromList(e, setDestinationSearch, "destination")
           }
         />
-        <button
-          disabled={isCalculated || !fieldNotEmpty}
-          onClick={(e) => handleCode(setDestination, setOrigin, e)}
-        >
-          Calculate
-        </button>
         <SelectPassenger
           passengers={passengers}
           setPassengers={setPassengers}
         />
+        <button
+          id="calculate"
+          disabled={isCalculated || !fieldNotEmpty}
+          onClick={(e) =>
+            handleCode(
+              setDestination,
+              setOrigin,
+              e,
+              originSearch,
+              destinationSearch,
+              isCalculated,
+              setIsCalculated
+            )
+          }
+        >
+          Calculate
+        </button>
+        <button
+          id="reset"
+          onClick={() =>
+            resetInputs(
+              setSuggestions,
+              setOriginSearch,
+              setDestinationSearch,
+              setIsCalculated,
+              setPassengers
+            )
+          }
+        >
+          Reset
+        </button>
         {isCalculated && (
           <p>Estimated Footprint: {totalFootprint} tonnes CO2e</p>
         )}
