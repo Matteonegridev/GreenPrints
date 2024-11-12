@@ -6,20 +6,22 @@ type ListProps = {
 };
 
 function ElementLists({ filteredElements, selectedItem }: ListProps) {
-  const [hoveredItem, setHoveredItem] = useState<number>(-1);
+  const [hovered, setHovered] = useState(-1);
+
   return (
     <>
       {filteredElements.length > 0 &&
         filteredElements.map((item, i) => (
           <li
-            className={`py-2 cursor-pointer ${
-              selectedItem === i || hoveredItem === i
-                ? "bg-green-600 text-white"
-                : ""
-            }`}
+            className="p-2 cursor-pointer text-sm"
+            style={{
+              backgroundColor:
+                selectedItem === i || hovered === i ? "green" : "",
+              color: selectedItem === i || hovered === i ? "white" : "",
+            }}
             key={i}
-            onMouseEnter={() => setHoveredItem(i)}
-            onMouseLeave={() => setHoveredItem(-1)}
+            onMouseEnter={() => setHovered(i)}
+            onMouseLeave={() => setHovered(-1)}
           >
             {item.country} - {item.name} {item.code}
           </li>

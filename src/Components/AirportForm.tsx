@@ -4,6 +4,8 @@ import useAirportData from "../Hooks/useAirportData";
 import useClimateData from "../Hooks/useClimateData";
 import AirportInput from "./AirportInput";
 import { useDebounce } from "use-debounce";
+import SelectPassenger from "./SelectPassenger";
+import { handleCode, resetInputs } from "../Utils/Functions";
 
 function AirportForm() {
   const [origin, setOrigin] = useState("");
@@ -20,13 +22,21 @@ function AirportForm() {
   const [passengers, setPassengers] = useState(1);
   const [debounceOrigin] = useDebounce(originSearch, 200);
   const [debounceDestination] = useDebounce(destinationSearch, 200);
+  const [isCalculated, setIsCalculated] = useState<boolean>(false);
+  // calcola se i field non sono vuoti:
+  const fieldNotEmpty =
+    originSearch.trim() !== "" &&
+    destinationSearch.trim() !== "" &&
+    passengers > 0;
 
   const { data, isLoading, error } = useAirportData();
   const {
     isLoading: load,
     error: err,
-    data: climatedata,
+    data: climateData,
   } = useClimateData(origin, destination, passengers);
+
+  const totalFootprint = (climateData?.footprint / 1000) * passengers;
 
   // useEffect per il debounce cosi che il dato è richiamato quando si smette di scrivere:
   useEffect(() => {
@@ -34,6 +44,9 @@ function AirportForm() {
       handleFilterItems(data, debounceOrigin, "origin");
 
       console.log(debounceOrigin);
+    } else {
+      // cancellato tutto dall'input la lista scompare:
+      setSuggestions((prev) => ({ ...prev, origin: [] }));
     }
   }, [data, debounceOrigin]);
 
@@ -41,6 +54,9 @@ function AirportForm() {
   useEffect(() => {
     if (debounceDestination) {
       handleFilterItems(data, debounceDestination, "destination");
+    } else {
+      // cancellato tutto dall'input la lista scompare:
+      setSuggestions((prev) => ({ ...prev, destination: [] }));
     }
   }, [data, debounceDestination]);
 
@@ -71,69 +87,100 @@ function AirportForm() {
   const handleClickFromList = (
     e: React.MouseEvent<HTMLUListElement>,
     setSearch: React.Dispatch<React.SetStateAction<string>>,
-    setCode: React.Dispatch<React.SetStateAction<string>>,
     type: "origin" | "destination"
   ) => {
     const li = (e.target as HTMLElement).closest("li");
     if (li) {
       const searchItem = li.textContent;
       console.log("clicked: ", searchItem);
-      const code = searchItem?.split(" ").pop();
+      // inserisce il valore nel campo di ricerca:
       setSearch(searchItem || "");
-      setCode(code || "");
       // smoother clearing dei campi:
       setSuggestions((prev) => ({ ...prev, [type]: [] }));
     }
   };
 
-  const handleChangeOrigin = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    type: "origin" | "destination"
+  ) => {
     const value = e.target.value;
-    setOriginSearch(value);
-  };
-
-  const handleChangeDestination = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value;
-    setDestinationSearch(value);
+    if (type === "origin") {
+      setOriginSearch(value);
+    } else {
+      setDestinationSearch(value);
+    }
   };
 
   return (
-    <div>
-      <form action="">
+    <>
+      <section>
         <AirportInput
+          setSuggestions={setSuggestions}
           type="origin"
-          setCode={setOrigin}
           setSearch={setOriginSearch}
-          setSuggestion={setSuggestions}
           placeholder="Enter departure airport"
           text="From:"
-          onChange={handleChangeOrigin}
           value={originSearch}
           airportData={suggestions.origin}
-          onClick={(e) =>
-            handleClickFromList(e, setOriginSearch, setOrigin, "origin")
-          }
+          onChange={(e) => handleInputChange(e, "origin")}
+          onClick={(e) => handleClickFromList(e, setOriginSearch, "origin")}
         />
         <AirportInput
+          setSuggestions={setSuggestions}
           type="destination"
-          setCode={setDestination}
           setSearch={setDestinationSearch}
-          setSuggestion={setSuggestions}
           placeholder="Enter arrival airport"
           text="To:"
-          onChange={handleChangeDestination}
           value={destinationSearch}
           airportData={suggestions.destination}
+          onChange={(e) => handleInputChange(e, "destination")}
           onClick={(e) =>
-            handleClickFromList(
-              e,
-              setDestinationSearch,
-              setDestination,
-              "destination"
-            )
+            handleClickFromList(e, setDestinationSearch, "destination")
           }
         />
-      </form>
-    </div>
+        <SelectPassenger
+          passengers={passengers}
+          setPassengers={setPassengers}
+        />
+        <div>
+          <button
+            id="calculate"
+            disabled={isCalculated || !fieldNotEmpty}
+            onClick={(e) =>
+              handleCode(
+                setDestination,
+                setOrigin,
+                e,
+                originSearch,
+                destinationSearch,
+                isCalculated,
+                setIsCalculated
+              )
+            }
+          >
+            Calculate
+          </button>
+          <button
+            id="reset"
+            onClick={() =>
+              resetInputs(
+                setSuggestions,
+                setOriginSearch,
+                setDestinationSearch,
+                setIsCalculated,
+                setPassengers
+              )
+            }
+          >
+            Reset
+          </button>
+        </div>
+        {isCalculated && (
+          <p>Estimated Footprint: {totalFootprint} tonnes CO2e</p>
+        )}
+      </section>
+    </>
   );
 }
 

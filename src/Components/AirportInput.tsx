@@ -1,6 +1,7 @@
-import { type Airport } from "../Hooks/useAirportData";
+import { SetStateAction } from "react";
 import useKeyEvent from "../Hooks/useKeyEvent";
 import ElementLists from "./ElementLists";
+import { type Airport } from "../Hooks/useAirportData";
 
 type InputProps = {
   text: string;
@@ -9,10 +10,9 @@ type InputProps = {
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   airportData: { country: string; code: string; name: string }[];
   onClick: (e: React.MouseEvent<HTMLUListElement>) => void;
-  setCode: React.Dispatch<React.SetStateAction<string>>;
   setSearch: React.Dispatch<React.SetStateAction<string>>;
-  setSuggestion: React.Dispatch<
-    React.SetStateAction<{ origin: Airport[]; destination: Airport[] }>
+  setSuggestions: React.Dispatch<
+    SetStateAction<{ origin: Airport[]; destination: Airport[] }>
   >;
   type: "origin" | "destination";
 };
@@ -22,32 +22,33 @@ function AirportInput({
   placeholder,
   value,
   onChange,
-  airportData,
   onClick,
-  setCode,
+  airportData,
   setSearch,
+  setSuggestions,
   type,
-  setSuggestion,
 }: InputProps) {
   const { selectedItem, handleKeyEvent } = useKeyEvent(
-    setCode,
+    airportData,
     setSearch,
-    setSuggestion,
-    airportData, // suggestions
+    setSuggestions,
     type
   );
+
   return (
     <>
-      <label htmlFor="">{text}</label>
+      <label htmlFor="airportInput">{text}</label>
       <input
-        required
+        autoComplete="off"
+        id="airportInput"
         tabIndex={0}
+        required
         type="text"
         placeholder={placeholder}
         value={value}
         onChange={onChange}
+        className="px-1 outline-none border"
         onKeyDown={handleKeyEvent}
-        className="px-1 border-black border "
       />
       <ul onClick={onClick}>
         <ElementLists
