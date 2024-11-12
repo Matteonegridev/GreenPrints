@@ -116,24 +116,24 @@ function AirportForm() {
     <>
       <section>
         <AirportInput
-          setSuggestions={setSuggestions}
-          type="origin"
-          setSearch={setOriginSearch}
           placeholder="Enter departure airport"
           text="From:"
           value={originSearch}
           airportData={suggestions.origin}
+          setSearch={setOriginSearch}
+          setSuggestions={setSuggestions}
+          type="origin"
           onChange={(e) => handleInputChange(e, "origin")}
           onClick={(e) => handleClickFromList(e, setOriginSearch, "origin")}
         />
         <AirportInput
-          setSuggestions={setSuggestions}
-          type="destination"
-          setSearch={setDestinationSearch}
           placeholder="Enter arrival airport"
           text="To:"
           value={destinationSearch}
           airportData={suggestions.destination}
+          setSearch={setDestinationSearch}
+          setSuggestions={setSuggestions}
+          type="destination"
           onChange={(e) => handleInputChange(e, "destination")}
           onClick={(e) =>
             handleClickFromList(e, setDestinationSearch, "destination")
