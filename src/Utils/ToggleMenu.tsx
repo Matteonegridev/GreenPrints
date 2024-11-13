@@ -12,7 +12,7 @@ function ToggleMenu({ onToggle, animate }: ToggleMenuProps) {
         initial={false}
         onClick={onToggle}
         animate={animate}
-        className="relative bg-red-500 w-14 h-14 rounded-full flex justify-center items-center"
+        className="relative z-10 bg-red-500 w-14 h-14 rounded-full flex justify-center items-center"
       >
         <motion.span
           variants={{
