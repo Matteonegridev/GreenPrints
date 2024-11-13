@@ -3,8 +3,9 @@ import ToggleDark from "../Utils/ToggleDark";
 import ToggleMenu from "../Utils/ToggleMenu";
 import { motion, useCycle } from "framer-motion";
 import { useEffect, useState } from "react";
+import NavbarDesktop from "./NavbarDesktop";
 
-const menuItems = [
+export const menuItems = [
   {
     title: "Main Page",
     href: "/",
@@ -91,20 +92,7 @@ function Navbar() {
           </motion.nav>
         </header>
       ) : (
-        <header>
-          <nav className="flex justify-around">
-            <ul className="flex flex-row justify-around items-center">
-              {menuItems.map((links, i) => (
-                <li>
-                  <Link to={links.href} key={i}>
-                    {links.title}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-            <ToggleDark />
-          </nav>
-        </header>
+        <NavbarDesktop menuItems={menuItems} />
       )}
     </>
   );
