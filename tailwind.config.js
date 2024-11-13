@@ -8,6 +8,7 @@ export default {
         dark: "#272727",
         primary: "#50D890",
         secondary: "#4F98CA",
+        tertiary: "#F06543",
         accent: "#EFFFFB",
       },
     },
