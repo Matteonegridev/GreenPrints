@@ -12,7 +12,7 @@ function ToggleMenu({ onToggle, animate }: ToggleMenuProps) {
         initial={false}
         onClick={onToggle}
         animate={animate}
-        className="relative z-10 bg-red-500 w-14 h-14 rounded-full flex justify-center items-center"
+        className="relative z-10 bg-white w-16 h-16 rounded-full flex justify-center items-center"
       >
         <motion.span
           variants={{
@@ -30,7 +30,7 @@ function ToggleMenu({ onToggle, animate }: ToggleMenuProps) {
             x: "-50%",
             y: "-50%",
           }}
-          className="absolute w-7 h-[3px] bg-black "
+          className="absolute w-9 h-[3px] bg-black "
         />
         <motion.span
           variants={{
@@ -44,7 +44,7 @@ function ToggleMenu({ onToggle, animate }: ToggleMenuProps) {
             x: "-50%",
             y: "-50%",
           }}
-          className="absolute w-7 h-[3px] bg-black "
+          className="absolute w-9 h-[3px] bg-black "
         />
         <motion.span
           variants={{
@@ -62,7 +62,7 @@ function ToggleMenu({ onToggle, animate }: ToggleMenuProps) {
             x: "-50%",
             y: "-50%",
           }}
-          className="absolute w-7 h-[3px] bg-black "
+          className="absolute w-9 h-[3px] bg-black "
         />
       </motion.button>
     </MotionConfig>

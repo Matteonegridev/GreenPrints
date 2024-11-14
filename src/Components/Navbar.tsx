@@ -62,7 +62,7 @@ function Navbar() {
   return (
     <>
       {isMobile ? (
-        <header className="p-4">
+        <header className="p-5 bg-dark flex justify-between items-center">
           <ToggleMenu
             onToggle={() => toggleActive()}
             animate={active ? "open" : "closed"}
@@ -71,7 +71,7 @@ function Navbar() {
             initial="closed"
             animate={active ? "open" : "closed"}
             variants={variantsNav}
-            className="fixed w-3/4 left-0 bottom-0 top-0  bg-red-500"
+            className="fixed w-3/4 left-0 -bottom-1 top-0  bg-primary drop-shadow-lg shadow-black"
           >
             <motion.ul
               variants={variantsUl}
@@ -80,8 +80,9 @@ function Navbar() {
             >
               {menuItems.map((links, i) => (
                 <motion.li
+                  key={i}
                   variants={variantsLi}
-                  className="text-5xl font-semibold"
+                  className="text-5xl font-semibold font-subHeadings "
                 >
                   <Link onClick={handleClick} to={links.href} key={i}>
                     {links.title}
@@ -90,6 +91,7 @@ function Navbar() {
               ))}
             </motion.ul>
           </motion.nav>
+          <ToggleDark />
         </header>
       ) : (
         <NavbarDesktop menuItems={menuItems} />
