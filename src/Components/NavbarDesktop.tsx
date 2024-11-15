@@ -12,10 +12,8 @@ function NavbarDesktop({ menuItems }: MenuItemProps) {
         <nav className="flex justify-around">
           <ul className="flex flex-row justify-around items-center">
             {menuItems.map((links, i) => (
-              <li className="font-subHeadings text-2xl">
-                <Link to={links.href} key={i}>
-                  {links.title}
-                </Link>
+              <li key={i} className="font-subHeadings text-2xl">
+                <Link to={links.href}>{links.title}</Link>
               </li>
             ))}
           </ul>

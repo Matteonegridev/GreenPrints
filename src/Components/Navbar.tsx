@@ -5,7 +5,7 @@ import { motion, useCycle } from "framer-motion";
 import { useEffect, useState } from "react";
 import NavbarDesktop from "./NavbarDesktop";
 
-export const menuItems = [
+const menuItems = [
   {
     title: "Main Page",
     href: "/",
@@ -71,7 +71,7 @@ function Navbar() {
             initial="closed"
             animate={active ? "open" : "closed"}
             variants={variantsNav}
-            className="fixed w-3/4 left-0 -bottom-1 top-0  bg-primary drop-shadow-lg shadow-black"
+            className="fixed w-3/4 left-0 -bottom-1 top-0  bg-primary drop-shadow-lg shadow-black z-10"
           >
             <motion.ul
               variants={variantsUl}

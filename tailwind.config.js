@@ -20,21 +20,39 @@ export default {
             letterSpacing: "0.03em",
           },
         ],
-        xl: "1.25rem",
-        "2xl": "1.563rem",
+        xl: [
+          "1.35rem",
+          {
+            lineHeight: "2rem",
+            letterSpacing: "0.05em",
+          },
+        ],
+        "2xl": [
+          "1.563rem",
+          {
+            lineHeight: "2rem",
+            letterSpacing: "0.04em",
+          },
+        ],
         "3xl": [
           "1.953rem",
           {
             lineHeight: "2rem",
-            letterSpacing: "0.2em",
+            letterSpacing: "0.04em",
           },
         ],
-        "4xl": "2.441rem",
+        "4xl": [
+          "2.441rem",
+          {
+            lineHeight: "2rem",
+            letterSpacing: "0.04em",
+          },
+        ],
         "5xl": [
           "3.052rem",
           {
             lineHeight: "3.2rem",
-            letterSpacing: "0.1em",
+            letterSpacing: "0.05em",
           },
         ],
         "6xl": ["3.815rem"],
