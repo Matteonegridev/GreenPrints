@@ -6,6 +6,7 @@ export default {
     extend: {
       colors: {
         dark: "#272727",
+        clearDark: "#3D3D3D",
         primary: "#50D890",
         secondary: "#4F98CA",
         tertiary: "#F06543",
@@ -17,7 +18,14 @@ export default {
           "1rem",
           {
             lineHeight: "1.8rem",
-            letterSpacing: "0.03em",
+            letterSpacing: "0.04em",
+          },
+        ],
+        placeholder: [
+          "1rem",
+          {
+            lineHeight: "1.8rem",
+            letterSpacing: "0.08em",
           },
         ],
         xl: [
@@ -37,7 +45,7 @@ export default {
         "3xl": [
           "1.953rem",
           {
-            lineHeight: "1.9rem",
+            lineHeight: "2rem",
             letterSpacing: "0.02em",
           },
         ],

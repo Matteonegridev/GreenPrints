@@ -114,72 +114,82 @@ function AirportForm() {
 
   return (
     <>
-      <section>
-        <AirportInput
-          placeholder="Enter departure airport"
-          text="From:"
-          value={originSearch}
-          airportData={suggestions.origin}
-          setSearch={setOriginSearch}
-          setSuggestions={setSuggestions}
-          type="origin"
-          onChange={(e) => handleInputChange(e, "origin")}
-          onClick={(e) => handleClickFromList(e, setOriginSearch, "origin")}
-        />
-        <AirportInput
-          placeholder="Enter arrival airport"
-          text="To:"
-          value={destinationSearch}
-          airportData={suggestions.destination}
-          setSearch={setDestinationSearch}
-          setSuggestions={setSuggestions}
-          type="destination"
-          onChange={(e) => handleInputChange(e, "destination")}
-          onClick={(e) =>
-            handleClickFromList(e, setDestinationSearch, "destination")
-          }
-        />
-        <SelectPassenger
-          passengers={passengers}
-          setPassengers={setPassengers}
-        />
-        <div>
-          <button
-            id="calculate"
-            disabled={isCalculated || !fieldNotEmpty}
-            onClick={(e) =>
-              handleCode(
-                setDestination,
-                setOrigin,
-                e,
-                originSearch,
-                destinationSearch,
-                isCalculated,
-                setIsCalculated
-              )
-            }
-          >
-            Calculate
-          </button>
-          <button
-            id="reset"
-            onClick={() =>
-              resetInputs(
-                setSuggestions,
-                setOriginSearch,
-                setDestinationSearch,
-                setIsCalculated,
-                setPassengers
-              )
-            }
-          >
-            Reset
-          </button>
+      <main className="p-4 w-full">
+        <div className="p-2 pt-4 text-center">
+          <h1 className="font-subHeadings uppercase text-3xl font-bold dark:text-white">
+            Calculate your flight emissions:
+          </h1>
         </div>
-        {isCalculated && (
-          <p>Estimated Footprint: {totalFootprint} tonnes CO2e</p>
-        )}
-      </section>
+        <section className="min-h-[50dvh] p-4 m-auto mt-12 bg-white dark:bg-clearDark dark:text-white flex flex-col gap-5 shadow-md ">
+          <AirportInput
+            placeholder="Enter departure airport/code/city"
+            text="From:"
+            value={originSearch}
+            airportData={suggestions.origin}
+            setSearch={setOriginSearch}
+            setSuggestions={setSuggestions}
+            type="origin"
+            onChange={(e) => handleInputChange(e, "origin")}
+            onClick={(e) => handleClickFromList(e, setOriginSearch, "origin")}
+          />
+          <AirportInput
+            placeholder="Enter arrival airport/code/city"
+            text="To:"
+            value={destinationSearch}
+            airportData={suggestions.destination}
+            setSearch={setDestinationSearch}
+            setSuggestions={setSuggestions}
+            type="destination"
+            onChange={(e) => handleInputChange(e, "destination")}
+            onClick={(e) =>
+              handleClickFromList(e, setDestinationSearch, "destination")
+            }
+          />
+          <SelectPassenger
+            text="Number of passengers:"
+            passengers={passengers}
+            setPassengers={setPassengers}
+          />
+          <div className="flex flex-col gap-2 pt-4 pb-4">
+            <button
+              className="w-full bg-primary py-2 px-8 rounded-sm text-base text-white font-medium"
+              id="calculate"
+              disabled={isCalculated || !fieldNotEmpty}
+              onClick={(e) =>
+                handleCode(
+                  setDestination,
+                  setOrigin,
+                  e,
+                  originSearch,
+                  destinationSearch,
+                  isCalculated,
+                  setIsCalculated
+                )
+              }
+            >
+              Calculate
+            </button>
+            <button
+              className="w-full bg-tertiary py-2 px-8 rounded-sm text-base text-white font-medium"
+              id="reset"
+              onClick={() =>
+                resetInputs(
+                  setSuggestions,
+                  setOriginSearch,
+                  setDestinationSearch,
+                  setIsCalculated,
+                  setPassengers
+                )
+              }
+            >
+              Reset
+            </button>
+          </div>
+          {isCalculated && (
+            <p>Estimated Footprint: {totalFootprint} tonnes CO2e</p>
+          )}
+        </section>
+      </main>
     </>
   );
 }

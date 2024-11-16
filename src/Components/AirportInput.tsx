@@ -37,7 +37,12 @@ function AirportInput({
 
   return (
     <>
-      <label htmlFor="airportInput">{text}</label>
+      <label
+        className="font-subHeadings text-2xl font-medium -mb-4"
+        htmlFor="airportInput"
+      >
+        {text}
+      </label>
       <input
         autoComplete="off"
         id="airportInput"
@@ -47,7 +52,7 @@ function AirportInput({
         placeholder={placeholder}
         value={value}
         onChange={onChange}
-        className="px-1 outline-none border"
+        className="dark:bg-clearDark dark:border-primary dark:focus:border-2 px-1 py-2 outline-none border border-secondary rounded-md placeholder:text-inherit placeholder:text-placeholder placeholder:text-slate-300 placeholder:pl-2 focus:border-2 dark:placeholder:text-zinc-400"
         onKeyDown={handleKeyEvent}
       />
       <ul onClick={onClick}>

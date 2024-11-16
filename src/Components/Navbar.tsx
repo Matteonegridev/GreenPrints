@@ -71,7 +71,12 @@ function Navbar() {
             initial="closed"
             animate={active ? "open" : "closed"}
             variants={variantsNav}
-            className="fixed w-3/4 left-0 -bottom-1 top-0  bg-primary drop-shadow-lg shadow-black z-10"
+            className="fixed w-3/4 left-0 -bottom-1 top-0 bg-dark z-10 "
+            style={{
+              boxShadow: active
+                ? "3px 0px 15px 10px rgba(0, 0, 0, 0.4)"
+                : "none",
+            }}
           >
             <motion.ul
               variants={variantsUl}
@@ -82,7 +87,7 @@ function Navbar() {
                 <motion.li
                   key={i}
                   variants={variantsLi}
-                  className="w-[10ch] text-dark border-b border-dark text-5xl font-semibold font-subHeadings pt-6 pb-4"
+                  className="w-[10ch] text-white border-b border-white text-5xl font-semibold font-subHeadings pt-6 pb-4"
                 >
                   <Link onClick={handleClick} to={links.href} key={i}>
                     {links.title}
