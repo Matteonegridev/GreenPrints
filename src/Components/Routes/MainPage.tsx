@@ -1,18 +1,35 @@
-import { Link } from "react-router-dom";
 import MainPageImage from "../../Utils/MainPageImage";
 import Logo from "../../Utils/Logo";
+import ButtonMain from "../../Utils/ButtonMain";
+import { motion } from "framer-motion";
+
+const variantsDiv = {
+  entry: {
+    opacity: [0, 0, 0, 1],
+    x: ["-100%", "0%"],
+    delay: 1.2,
+    transition: {
+      duration: 1,
+      ease: "easeInOut",
+    },
+  },
+};
 
 function MainPage() {
   return (
-    <div className="pt-8 pr-4 pl-4 h-[100dvh]">
-      <div className="flex gap-3 items-center p-1 justify-center ">
-        <div className="">
-          <Logo stroke="#50D890" height="75px" width="75px" strokeWidth="3" />
+    <div className="pt-8 pr-4 pl-4 h-[100dvh] dark:text-white">
+      <motion.div
+        variants={variantsDiv}
+        animate="entry"
+        className="flex gap-3 items-center justify-center pl-2"
+      >
+        <div>
+          <Logo stroke="#50D890" height="70px" width="70px" strokeWidth="3" />
         </div>
-        <h1 className="font-headings font-extrabold uppercase  text-4xl ">
+        <h1 className="font-headings font-medium uppercase text-4xl ">
           Footprint calculator
         </h1>
-      </div>
+      </motion.div>
       <div className="pt-8 pb-8 ">
         <MainPageImage />
         <h1 className="font-subHeadings font-extrabold uppercase italic text-xl pr-2 pl-2 ">
@@ -28,14 +45,7 @@ function MainPage() {
           <strong className="text-primary">protect</strong> our planet.
         </p>
       </div>
-      <div className="pb-2">
-        <Link
-          className="block rounded-md py-2 text-center text-white bg-primary text-xl font-headings uppercase font-bold"
-          to={"calculator"}
-        >
-          Calculate!
-        </Link>
-      </div>
+      <ButtonMain navigate="calculator" />
     </div>
   );
 }

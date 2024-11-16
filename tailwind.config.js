@@ -37,15 +37,15 @@ export default {
         "3xl": [
           "1.953rem",
           {
-            lineHeight: "2rem",
-            letterSpacing: "0.04em",
+            lineHeight: "1.9rem",
+            letterSpacing: "0.02em",
           },
         ],
         "4xl": [
           "2.441rem",
           {
-            lineHeight: "2rem",
-            letterSpacing: "0.04em",
+            lineHeight: "2.2rem",
+            letterSpacing: "0.02em",
           },
         ],
         "5xl": [
@@ -59,6 +59,7 @@ export default {
       },
       fontFamily: {
         headings: "Noto Sans",
+        heading2: "PT Sans Narrow",
         subHeadings: "Roboto Condensed",
         body: "Rubik",
       },

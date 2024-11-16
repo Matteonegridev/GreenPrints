@@ -62,7 +62,7 @@ function Navbar() {
   return (
     <>
       {isMobile ? (
-        <header className="p-5 bg-dark flex justify-between items-center">
+        <header className="p-5 bg-primary flex justify-between items-center">
           <ToggleMenu
             onToggle={() => toggleActive()}
             animate={active ? "open" : "closed"}
@@ -76,13 +76,13 @@ function Navbar() {
             <motion.ul
               variants={variantsUl}
               animate={active ? "open" : "closed"}
-              className=" flex flex-col gap-8 py-40 px-4"
+              className=" flex flex-col gap-12 py-48 px-5"
             >
               {menuItems.map((links, i) => (
                 <motion.li
                   key={i}
                   variants={variantsLi}
-                  className="text-5xl font-semibold font-subHeadings "
+                  className="w-[10ch] text-dark border-b border-dark text-5xl font-semibold font-subHeadings pt-6 pb-4"
                 >
                   <Link onClick={handleClick} to={links.href} key={i}>
                     {links.title}

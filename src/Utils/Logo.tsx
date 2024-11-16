@@ -9,8 +9,9 @@ function Logo({ stroke, width, height, strokeWidth }: LogoProp) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 116.41 85.42"
-      fill="#fff"
+      viewBox="-11 0 130 85.42"
+      fill="#044B94"
+      fillOpacity="0"
       stroke={stroke}
       strokeWidth={strokeWidth}
       strokeMiterlimit="10"

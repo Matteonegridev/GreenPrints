@@ -17,7 +17,7 @@ const sun = {
     },
   },
   exit: {
-    x: "100%",
+    x: "50%",
     opacity: 0,
     transition: {
       duration: 0.5,
@@ -37,7 +37,7 @@ const moon = {
     },
   },
   exit: {
-    x: "-100%",
+    x: "-50%",
     opacity: 0,
     transition: {
       duration: 0.5,
@@ -51,11 +51,8 @@ function ToggleDark() {
 
   useEffect(() => {
     const root = window.document.documentElement;
-    if (isDark) {
-      root.classList.add("dark");
-    } else {
-      root.classList.remove("dark");
-    }
+    if (isDark) return root.classList.add("dark");
+    else return root.classList.remove("dark");
   }, [isDark]);
 
   useEffect(() => {
@@ -65,6 +62,7 @@ function ToggleDark() {
   const toggleDark = () => {
     setIsDark(!isDark);
   };
+
   return (
     <>
       <button
