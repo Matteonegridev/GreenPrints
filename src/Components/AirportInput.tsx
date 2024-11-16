@@ -57,7 +57,7 @@ function AirportInput({
       />
       {isListActive && (
         <ul
-          className="overflow-y-clip h-48 p-1 border border-accent rounded-md "
+          className="overflow-y-scroll h-48 p-1 border border-accent rounded-md "
           onClick={onClick}
         >
           <ElementLists
