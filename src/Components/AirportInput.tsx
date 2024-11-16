@@ -20,19 +20,20 @@ type InputProps = {
 function AirportInput({
   text,
   placeholder,
-  value,
   onChange,
   onClick,
   airportData,
   setSearch,
   setSuggestions,
   type,
+  value,
 }: InputProps) {
-  const { selectedItem, handleKeyEvent } = useKeyEvent(
+  const { selectedItem, handleKeyEvent, isListActive } = useKeyEvent(
     airportData,
     setSearch,
     setSuggestions,
-    type
+    type,
+    value
   );
 
   return (
@@ -46,21 +47,25 @@ function AirportInput({
       <input
         autoComplete="off"
         id="airportInput"
-        tabIndex={0}
         required
         type="text"
         placeholder={placeholder}
         value={value}
         onChange={onChange}
-        className="dark:bg-clearDark dark:border-primary dark:focus:border-2 px-1 py-2 outline-none border border-secondary rounded-md placeholder:text-inherit placeholder:text-placeholder placeholder:text-slate-300 placeholder:pl-2 focus:border-2 dark:placeholder:text-zinc-400"
+        className="dark:bg-clearDark dark:border-primary dark:focus:border-2 px-1 py-2 outline-none border border-secondary rounded-md placeholder:text-inherit placeholder:text-placeholder placeholder:text-slate-300 placeholder:pl-2 focus:border-2 dark:placeholder:text-zinc-400 "
         onKeyDown={handleKeyEvent}
       />
-      <ul onClick={onClick}>
-        <ElementLists
-          selectedItem={selectedItem}
-          filteredElements={airportData}
-        />
-      </ul>
+      {isListActive && (
+        <ul
+          className="overflow-y-clip h-48 p-1 border border-accent rounded-md "
+          onClick={onClick}
+        >
+          <ElementLists
+            selectedItem={selectedItem}
+            filteredElements={airportData}
+          />
+        </ul>
+      )}
     </>
   );
 }

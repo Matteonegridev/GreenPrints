@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Airport } from "../Hooks/useAirportData"; // Assuming Airport type is imported
 
 // Custom hook for handling key events
@@ -8,9 +8,11 @@ const useKeyEvent = (
   setSuggestions: React.Dispatch<
     React.SetStateAction<{ origin: Airport[]; destination: Airport[] }>
   >,
-  type: "origin" | "destination"
+  type: "origin" | "destination",
+  value: string
 ) => {
   const [selectedItem, setSelectedItem] = useState<number>(-1);
+  const [isListActive, setIsListActive] = useState<boolean>(false);
 
   const handleKeyEvent = (e: React.KeyboardEvent<HTMLElement>) => {
     const totalSuggestions = suggestions.length;
@@ -38,11 +40,13 @@ const useKeyEvent = (
           setSearch(searchItem);
           setSelectedItem(-1);
           setSuggestions((prev) => ({ ...prev, [type]: [] }));
+          setIsListActive(false);
         }
         break;
 
       case "Escape":
         setSelectedItem(-1);
+        setIsListActive(false);
         break;
 
       default:
@@ -50,7 +54,11 @@ const useKeyEvent = (
     }
   };
 
-  return { selectedItem, handleKeyEvent };
+  useEffect(() => {
+    setIsListActive(suggestions.length > 0 && value.trim().length > 0);
+  }, [value, suggestions, setIsListActive]);
+
+  return { selectedItem, handleKeyEvent, isListActive };
 };
 
 export default useKeyEvent;
