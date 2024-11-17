@@ -35,6 +35,13 @@ export default {
             letterSpacing: "0.05em",
           },
         ],
+        faq: [
+          "1.35rem",
+          {
+            lineHeight: "1.5rem",
+            letterSpacing: "0.05em",
+          },
+        ],
         "2xl": [
           "1.563rem",
           {

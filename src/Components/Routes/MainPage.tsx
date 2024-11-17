@@ -5,11 +5,11 @@ import { motion } from "framer-motion";
 
 const variantsDiv = {
   entry: {
-    opacity: [0, 0, 0, 1],
+    opacity: [0, 0, 0, 0, 1],
     x: ["-100%", "0%"],
-    delay: 1.2,
+    delay: 1,
     transition: {
-      duration: 1,
+      duration: 1.5,
       ease: "easeInOut",
     },
   },
@@ -20,7 +20,7 @@ const variantsSubH = {
     y: ["-80%", "0%"],
     delay: 1,
     transition: {
-      duration: 1.8,
+      duration: 2.3,
       ease: "linear",
     },
   },
