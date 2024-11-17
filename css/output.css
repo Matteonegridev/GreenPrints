@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=PT+Sans+Narrow:wght@400;700&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=PT+Sans+Narrow:wght@400;700&family=Gasoek+One&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap");
 
 *, ::before, ::after{
   --tw-border-spacing-x: 0;
@@ -596,8 +596,8 @@ video {
   margin-bottom: -1rem;
 }
 
-.mb-4{
-  margin-bottom: 1rem;
+.mb-6{
+  margin-bottom: 1.5rem;
 }
 
 .mt-12{
@@ -692,16 +692,8 @@ video {
   gap: 0.5rem;
 }
 
-.gap-3{
-  gap: 0.75rem;
-}
-
 .gap-5{
   gap: 1.25rem;
-}
-
-.overflow-y-clip{
-  overflow-y: clip;
 }
 
 .overflow-y-scroll{
@@ -782,6 +774,29 @@ video {
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }
 
+.bg-gradient-to-r{
+  background-image: linear-gradient(to right, var(--tw-gradient-stops));
+}
+
+.from-primary{
+  --tw-gradient-from: #50D890 var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(80 216 144 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.to-secondary{
+  --tw-gradient-to: #4F98CA var(--tw-gradient-to-position);
+}
+
+.bg-clip-text{
+  -webkit-background-clip: text;
+          background-clip: text;
+}
+
+.p-0{
+  padding: 0px;
+}
+
 .p-1{
   padding: 0.25rem;
 }
@@ -801,6 +816,11 @@ video {
 .px-1{
   padding-left: 0.25rem;
   padding-right: 0.25rem;
+}
+
+.px-4{
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
 .px-5{
@@ -823,6 +843,11 @@ video {
   padding-bottom: 12rem;
 }
 
+.py-6{
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+}
+
 .pb-2{
   padding-bottom: 0.5rem;
 }
@@ -839,16 +864,8 @@ video {
   padding-left: 0.5rem;
 }
 
-.pl-4{
-  padding-left: 1rem;
-}
-
 .pr-2{
   padding-right: 0.5rem;
-}
-
-.pr-4{
-  padding-right: 1rem;
 }
 
 .pt-2{
@@ -867,6 +884,14 @@ video {
   padding-top: 2rem;
 }
 
+.pt-1{
+  padding-top: 0.25rem;
+}
+
+.pt-3{
+  padding-top: 0.75rem;
+}
+
 .text-center{
   text-align: center;
 }
@@ -879,8 +904,12 @@ video {
   font-family: Noto Sans;
 }
 
-.font-subHeadings{
-  font-family: Roboto Condensed;
+.font-title{
+  font-family: Gasoek One;
+}
+
+.font-subheading{
+  font-family: PT Sans Narrow;
 }
 
 .text-2xl{
@@ -939,18 +968,33 @@ video {
   text-transform: uppercase;
 }
 
-.italic{
-  font-style: italic;
-}
-
 .text-primary{
   --tw-text-opacity: 1;
   color: rgb(80 216 144 / var(--tw-text-opacity));
 }
 
+.text-transparent{
+  color: transparent;
+}
+
 .text-white{
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
+.text-accent{
+  --tw-text-opacity: 1;
+  color: rgb(239 255 251 / var(--tw-text-opacity));
+}
+
+.text-clearDark{
+  --tw-text-opacity: 1;
+  color: rgb(61 61 61 / var(--tw-text-opacity));
+}
+
+.text-gray-500{
+  --tw-text-opacity: 1;
+  color: rgb(107 114 128 / var(--tw-text-opacity));
 }
 
 .shadow-md{

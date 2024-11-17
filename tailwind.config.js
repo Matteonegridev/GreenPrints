@@ -67,8 +67,8 @@ export default {
       },
       fontFamily: {
         headings: "Noto Sans",
-        heading2: "PT Sans Narrow",
-        subHeadings: "Roboto Condensed",
+        subheading: "PT Sans Narrow",
+        title: "Gasoek One",
         body: "Rubik",
       },
     },

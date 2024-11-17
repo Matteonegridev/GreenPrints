@@ -14,25 +14,47 @@ const variantsDiv = {
     },
   },
 };
+const variantsSubH = {
+  entry: {
+    opacity: [0, 0, 0, 0, 1],
+    y: ["-80%", "0%"],
+    delay: 1,
+    transition: {
+      duration: 1.8,
+      ease: "linear",
+    },
+  },
+};
 
 function MainPage() {
   return (
-    <div className="pt-8 pr-4 pl-4 h-[100dvh] dark:text-white">
+    <div className="pt-8 px-4 py-6 h-[100dvh] dark:text-white">
       <motion.div
         variants={variantsDiv}
         animate="entry"
-        className="flex gap-3 items-center justify-center pl-2"
+        className="flex items-center justify-around "
       >
-        <div>
-          <Logo stroke="#50D890" height="70px" width="70px" strokeWidth="3" />
-        </div>
-        <h1 className="font-headings font-medium uppercase text-4xl ">
-          Footprint calculator
+        <Logo stroke="#50D890" height="70.5px" width="50.2px" strokeWidth="1" />
+        <h1
+          className="font-title font-medium uppercase text-4xl 
+        bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent "
+        >
+          GreenPrints
         </h1>
       </motion.div>
+      <motion.div
+        variants={variantsSubH}
+        animate="entry"
+        className="text-center pt-3"
+      >
+        <h3 className="font-subheading font-medium text-2xl text-gray-500">
+          A step towards a better future
+        </h3>
+      </motion.div>
+
       <div className="pt-8 pb-8 ">
         <MainPageImage />
-        <h1 className="font-subHeadings font-extrabold uppercase italic text-xl pr-2 pl-2 ">
+        <h1 className="font-subheading font-extrabold uppercase text-2xl pr-2 pl-2 ">
           How heavy is your <span className="text-primary">footprint</span>?
         </h1>
         <p className="font-body text-base text-pretty pt-2 pr-2 pl-2">

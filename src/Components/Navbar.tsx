@@ -74,7 +74,7 @@ function Navbar() {
             className="fixed w-3/4 left-0 -bottom-1 top-0 bg-dark z-10 "
             style={{
               boxShadow: active
-                ? "3px 0px 15px 10px rgba(0, 0, 0, 0.4)"
+                ? "3px 0px 20px 5px rgba(0, 0, 0, 0.3)"
                 : "none",
             }}
           >

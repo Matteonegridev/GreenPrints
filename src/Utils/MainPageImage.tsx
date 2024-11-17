@@ -1,6 +1,6 @@
 function MainPageImage() {
   return (
-    <div className="mb-4">
+    <div className="mb-6">
       <figure className="clip-circle">
         <img
           src="../assets/img/world.png"
