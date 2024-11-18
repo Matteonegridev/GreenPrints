@@ -9,6 +9,25 @@ type Props = {
 function FaqQuestion({ question, answer }: Props) {
   const [isOpen, setIsOpen] = useState(false);
 
+  const variantsDiv = {
+    open: {
+      opacity: 1,
+      height: "auto",
+      transition: {
+        duration: 0.3,
+        ease: "easeIn",
+      },
+    },
+    closed: {
+      opacity: 0,
+      height: 0,
+      transition: {
+        duration: 0.3,
+        ease: "easeOut",
+      },
+    },
+  };
+
   return (
     <div className="border-b border-black dark:border-b dark:border-white">
       <div className="flex justify-between items-center pt-6 gap-2 relative">
@@ -67,17 +86,20 @@ function FaqQuestion({ question, answer }: Props) {
                 },
               },
             }}
+            initial={false}
             animate={isOpen ? "open" : "closed"}
             className="absolute rotate-90  w-6 h-[1px]  dark:bg-white bg-black "
           ></motion.span>
         </div>
       </div>
-
-      {isOpen && (
-        <motion.div className="py-3">
-          <p className="text-body text-base">{answer}</p>
-        </motion.div>
-      )}
+      <motion.div
+        variants={variantsDiv}
+        initial="closed"
+        animate={isOpen ? "open" : "closed"}
+        className="py-2 overflow-hidden"
+      >
+        <p className="text-body text-base">{answer}</p>
+      </motion.div>
     </div>
   );
 }

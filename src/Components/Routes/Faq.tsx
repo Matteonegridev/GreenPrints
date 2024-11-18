@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import FaqQuestion from "../FaqQuestion";
 
 const faq = [
@@ -69,6 +70,14 @@ function Faq() {
       <h1 className="text-center font-headings font-black pt-5 text-3xl dark:text-white">
         Frequently Asked Question
       </h1>
+      <div className="pl-3 pt-8 flex justify-start gap-3 [&>*]:dark:text-tertiary [&>*]:text-secondary">
+        <Link to={"/calculator"}>
+          <i className="fa-solid fa-chevron-left text-xl"></i>
+          <span className="font-subheading uppercase text-2xl font-semibold ml-3">
+            Calculate!
+          </span>
+        </Link>
+      </div>
       <section className=" dark:text-white px-4 py-4">
         {faq.map((faq) => (
           <FaqQuestion
