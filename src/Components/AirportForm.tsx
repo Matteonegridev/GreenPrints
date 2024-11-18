@@ -6,6 +6,7 @@ import AirportInput from "./AirportInput";
 import { useDebounce } from "use-debounce";
 import SelectPassenger from "./SelectPassenger";
 import { handleCode, resetInputs } from "../Utils/Functions";
+import Result from "./Result";
 
 function AirportForm() {
   const [origin, setOrigin] = useState("");
@@ -122,7 +123,7 @@ function AirportForm() {
         </div>
         <section className="min-h-[50dvh] p-4 m-auto mt-12 bg-white dark:bg-clearDark dark:text-white flex flex-col gap-5 shadow-md ">
           <AirportInput
-            placeholder="Enter departure airport/code/city"
+            placeholder="Enter departure country/airport/code"
             text="From:"
             value={originSearch}
             airportData={suggestions.origin}
@@ -133,7 +134,7 @@ function AirportForm() {
             onClick={(e) => handleClickFromList(e, setOriginSearch, "origin")}
           />
           <AirportInput
-            placeholder="Enter arrival airport/code/city"
+            placeholder="Enter arrival country/airport/code"
             text="To:"
             value={destinationSearch}
             airportData={suggestions.destination}
@@ -186,7 +187,12 @@ function AirportForm() {
             </button>
           </div>
           {isCalculated && (
-            <p>Estimated Footprint: {totalFootprint} tonnes CO2e</p>
+            <>
+              <Result
+                isCalculated={isCalculated}
+                totalFootprint={totalFootprint}
+              />
+            </>
           )}
         </section>
       </main>
