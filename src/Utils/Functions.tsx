@@ -14,7 +14,11 @@ export const handleCode = (
   const fromCode = originSearch?.split(" ").pop();
   setDestination(toCode || "");
   setOrigin(fromCode || "");
-  if (!isCalculated) setIsCalculated(true);
+  if (!isCalculated) {
+    setTimeout(() => {
+      setIsCalculated(true);
+    }, 500);
+  }
 };
 
 export const resetInputs = (

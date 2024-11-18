@@ -5,7 +5,7 @@ import { motion, useCycle } from "framer-motion";
 import { useEffect, useState } from "react";
 import NavbarDesktop from "./NavbarDesktop";
 
-export const menuItems = [
+const menuItems = [
   {
     title: "Main Page",
     href: "/",
@@ -62,7 +62,7 @@ function Navbar() {
   return (
     <>
       {isMobile ? (
-        <header className="p-4">
+        <header className="p-5 bg-primary flex justify-between items-center">
           <ToggleMenu
             onToggle={() => toggleActive()}
             animate={active ? "open" : "closed"}
@@ -71,17 +71,23 @@ function Navbar() {
             initial="closed"
             animate={active ? "open" : "closed"}
             variants={variantsNav}
-            className="fixed w-3/4 left-0 bottom-0 top-0  bg-red-500"
+            className="fixed w-3/4 left-0 -bottom-1 top-0 bg-primary z-10 "
+            style={{
+              boxShadow: active
+                ? "3px 0px 20px 5px rgba(0, 0, 0, 0.3)"
+                : "none",
+            }}
           >
             <motion.ul
               variants={variantsUl}
               animate={active ? "open" : "closed"}
-              className=" flex flex-col gap-8 py-40 px-4"
+              className=" flex flex-col gap-12 py-48 px-5"
             >
               {menuItems.map((links, i) => (
                 <motion.li
+                  key={i}
                   variants={variantsLi}
-                  className="text-5xl font-semibold"
+                  className="w-[10ch] text-white border-b border-white text-5xl font-semibold font-subHeadings pt-6 pb-4"
                 >
                   <Link onClick={handleClick} to={links.href} key={i}>
                     {links.title}
@@ -90,6 +96,7 @@ function Navbar() {
               ))}
             </motion.ul>
           </motion.nav>
+          <ToggleDark />
         </header>
       ) : (
         <NavbarDesktop menuItems={menuItems} />
