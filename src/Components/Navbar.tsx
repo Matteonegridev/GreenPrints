@@ -62,7 +62,7 @@ function Navbar() {
   return (
     <>
       {isMobile ? (
-        <header className="p-5 bg-primary flex justify-between items-center">
+        <header className="p-5 bg-primary flex justify-between items-center z-10 fixed  right-0 left-0">
           <ToggleMenu
             onToggle={() => toggleActive()}
             animate={active ? "open" : "closed"}
@@ -87,9 +87,14 @@ function Navbar() {
                 <motion.li
                   key={i}
                   variants={variantsLi}
-                  className="w-[10ch] text-white border-b border-white text-5xl font-semibold font-subHeadings pt-6 pb-4"
+                  className=" text-white border-b border-white text-5xl font-semibold font-subHeadings py-6"
                 >
-                  <Link onClick={handleClick} to={links.href} key={i}>
+                  <Link
+                    onClick={handleClick}
+                    to={links.href}
+                    key={i}
+                    className="block w-[10ch]"
+                  >
                     {links.title}
                   </Link>
                 </motion.li>
