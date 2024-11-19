@@ -8,11 +8,14 @@ type MenuItemProps = {
 function NavbarDesktop({ menuItems }: MenuItemProps) {
   return (
     <>
-      <header>
+      <header className="md:bg-primary md:p-6">
         <nav className="flex justify-around">
-          <ul className="flex flex-row justify-around items-center">
+          <ul className="flex flex-row justify-around items-center md:gap-7 ">
             {menuItems.map((links, i) => (
-              <li key={i} className="font-subHeadings text-2xl">
+              <li
+                key={i}
+                className="font-subHeadings text-2xl md:text-4xl md:font-normal md:text-white"
+              >
                 <Link to={links.href}>{links.title}</Link>
               </li>
             ))}
