@@ -32,11 +32,11 @@ function MainPage() {
       <motion.div
         variants={variantsDiv}
         animate="entry"
-        className="flex items-center justify-around "
+        className="flex items-center justify-around md:justify-center "
       >
         <Logo stroke="#50D890" height="70.5px" width="50.2px" strokeWidth="1" />
         <h1
-          className="font-title font-medium uppercase text-4xl 
+          className="font-title font-medium uppercase text-4xl  md:text-5xl
         bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent "
         >
           GreenPrints
