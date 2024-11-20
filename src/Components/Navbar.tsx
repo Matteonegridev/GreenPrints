@@ -45,12 +45,12 @@ const variantsLi = {
 
 function Navbar() {
   const [active, toggleActive] = useCycle(false, true);
-  const mobileSize = window.innerWidth < 756;
+  const mobileSize = window.innerWidth < 768;
   const [isMobile, setIsMobile] = useState(mobileSize);
 
   // funzione che calcola il resize:
   useEffect(() => {
-    const handleResize = () => setIsMobile(window.innerWidth < 756);
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
@@ -71,7 +71,7 @@ function Navbar() {
             initial="closed"
             animate={active ? "open" : "closed"}
             variants={variantsNav}
-            className="fixed w-3/4 left-0 -bottom-1 top-0 bg-primary z-10 "
+            className="fixed w-3/4 left-0 -bottom-1 top-0 bg-primary z-10 font-subheading"
             style={{
               boxShadow: active
                 ? "3px 0px 20px 5px rgba(0, 0, 0, 0.3)"
@@ -87,7 +87,7 @@ function Navbar() {
                 <motion.li
                   key={i}
                   variants={variantsLi}
-                  className=" text-white border-b border-white text-5xl font-semibold font-subHeadings py-6"
+                  className=" text-white border-b border-white text-5xl font-semibold py-6"
                 >
                   <Link
                     onClick={handleClick}

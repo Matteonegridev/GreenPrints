@@ -32,7 +32,7 @@ function FaqQuestion({ question, answer }: Props) {
     <div className="border-b border-black dark:border-b dark:border-white">
       <div className="flex justify-between items-center pt-6 relative ">
         <h1
-          className={` w-[25ch] font-headings font-bold text-faq pb-2 ${
+          className={` w-[25ch] md:w-[55ch] font-headings font-bold text-faq pb-2 ${
             isOpen
               ? "text-tertiary transition-all duration-200 ease-linear"
               : "transition-all duration-200 ease-linear"

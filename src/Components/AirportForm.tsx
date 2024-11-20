@@ -116,12 +116,12 @@ function AirportForm() {
   return (
     <>
       <main className="p-4 w-full">
-        <div className="p-2 pt-4 text-center">
-          <h1 className="font-subHeadings uppercase text-3xl font-bold dark:text-white">
+        <div className="p-2 pt-4 md:w-full ">
+          <h1 className="font-subHeadings uppercase text-3xl font-bold dark:text-white md:pt-10 md:text-4xl md:w-full text-center ">
             Calculate your flight emissions:
           </h1>
         </div>
-        <section className="min-h-[50dvh] p-4 m-auto mt-12 bg-white dark:bg-clearDark dark:text-white flex flex-col gap-5 shadow-md ">
+        <section className="min-h-[50dvh] p-4 m-auto mt-12 bg-white dark:bg-clearDark dark:text-white flex flex-col gap-5  shadow-md md:w-[80%]  md:gap-8">
           <AirportInput
             placeholder="Enter departure country/airport/code"
             text="From:"
@@ -151,7 +151,7 @@ function AirportForm() {
             passengers={passengers}
             setPassengers={setPassengers}
           />
-          <div className="flex flex-col gap-2 pt-4 pb-4">
+          <div className="flex flex-col gap-2 pt-4 pb-4 md:pt-10">
             <button
               className="w-full bg-primary py-2 px-8 rounded-sm text-base text-white font-medium"
               id="calculate"

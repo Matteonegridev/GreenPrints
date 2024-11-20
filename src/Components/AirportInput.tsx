@@ -52,12 +52,12 @@ function AirportInput({
         placeholder={placeholder}
         value={value}
         onChange={onChange}
-        className="dark:bg-clearDark dark:border-primary dark:focus:border-2 px-1 py-2 outline-none border border-secondary rounded-md placeholder:text-inherit placeholder:text-placeholder placeholder:text-slate-300 placeholder:pl-2 focus:border-2 dark:placeholder:text-zinc-400 "
+        className="dark:bg-clearDark dark:border-primary dark:focus:border-2 px-1 py-2 outline-none border border-secondary rounded-md placeholder:text-inherit placeholder:text-placeholder placeholder:text-slate-300 placeholder:pl-2 focus:border-2 dark:placeholder:text-zinc-400"
         onKeyDown={handleKeyEvent}
       />
       {isListActive && (
         <ul
-          className="overflow-y-scroll h-48 p-1 border border-accent rounded-md "
+          className="overflow-y-scroll h-48 p-1 border border-accent rounded-md md:overflow-y-scroll"
           onClick={onClick}
         >
           <ElementLists
