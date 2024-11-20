@@ -66,7 +66,7 @@ function ToggleDark() {
   return (
     <>
       <button
-        className="w-16 h-16 bg-white rounded-full flex justify-center items-center"
+        className="w-16 h-16 bg-white rounded-full flex justify-center items-center "
         onClick={toggleDark}
       >
         <AnimatePresence initial={false}>

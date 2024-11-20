@@ -12,11 +12,11 @@ function About() {
         Our Mission:
       </h1>
       <div className="border border-s-4 dark:border-tertiary border-primary rounded-xl p-4 text-balanced my-4 dark:text-white md:grid md:grid-cols-2">
-        <div>
-          <small className="text-secondary font-subheading text-base font-semibold ">
+        <div className="xl:pl-12 pt-4">
+          <p className="text-secondary font-subheading text-base font-semibold xl:text-2xl ">
             About GreenPrints
-          </small>
-          <p className="text-base font-body hyphens-auto pt-3 ">
+          </p>
+          <p className="text-base font-body hyphens-auto pt-3 xl:text-xl  ">
             At <strong>GreenPrints</strong>, we are committed to empowering
             individuals and organizations to make informed, sustainable choices.
             Our mission is to shine a light on the environmental impact of air

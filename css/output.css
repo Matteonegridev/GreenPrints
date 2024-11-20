@@ -1199,10 +1199,6 @@ video {
   transition-timing-function: linear;
 }
 
-.clip-circle {
-  clip-path: circle(50% at 50% 50%);
-}
-
 .placeholder\:pl-2::-moz-placeholder{
   padding-left: 0.5rem;
 }
@@ -1274,6 +1270,10 @@ video {
     display: block;
   }
 
+  .md\:flex{
+    display: flex;
+  }
+
   .md\:grid{
     display: grid;
   }
@@ -1324,6 +1324,10 @@ video {
 
   .md\:justify-center{
     justify-content: center;
+  }
+
+  .md\:justify-around{
+    justify-content: space-around;
   }
 
   .md\:gap-6{
@@ -1394,6 +1398,121 @@ video {
   .md\:text-white{
     --tw-text-opacity: 1;
     color: rgb(255 255 255 / var(--tw-text-opacity));
+  }
+}
+
+@media (min-width: 1012px){
+  .xl\:order-1{
+    order: 1;
+  }
+
+  .xl\:order-2{
+    order: 2;
+  }
+
+  .xl\:mb-4{
+    margin-bottom: 1rem;
+  }
+
+  .xl\:mb-7{
+    margin-bottom: 1.75rem;
+  }
+
+  .xl\:flex{
+    display: flex;
+  }
+
+  .xl\:grid{
+    display: grid;
+  }
+
+  .xl\:w-\[15rem\]{
+    width: 15rem;
+  }
+
+  .xl\:w-full{
+    width: 100%;
+  }
+
+  .xl\:grid-cols-2{
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .xl\:place-content-center{
+    place-content: center;
+  }
+
+  .xl\:place-items-center{
+    place-items: center;
+  }
+
+  .xl\:justify-between{
+    justify-content: space-between;
+  }
+
+  .xl\:justify-evenly{
+    justify-content: space-evenly;
+  }
+
+  .xl\:p-1{
+    padding: 0.25rem;
+  }
+
+  .xl\:p-2{
+    padding: 0.5rem;
+  }
+
+  .xl\:p-3{
+    padding: 0.75rem;
+  }
+
+  .xl\:py-4{
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+
+  .xl\:pt-24{
+    padding-top: 6rem;
+  }
+
+  .xl\:pt-5{
+    padding-top: 1.25rem;
+  }
+
+  .xl\:pl-6{
+    padding-left: 1.5rem;
+  }
+
+  .xl\:pl-10{
+    padding-left: 2.5rem;
+  }
+
+  .xl\:pl-12{
+    padding-left: 3rem;
+  }
+
+  .xl\:text-2xl{
+    font-size: 1.563rem;
+    line-height: 2rem;
+    letter-spacing: 0.04em;
+  }
+
+  .xl\:text-3xl{
+    font-size: 1.953rem;
+    line-height: 2rem;
+    letter-spacing: 0.02em;
+  }
+
+  .xl\:text-5xl{
+    font-size: 3.052rem;
+    line-height: 3.2rem;
+    letter-spacing: 0.05em;
+  }
+
+  .xl\:text-xl{
+    font-size: 1.35rem;
+    line-height: 2rem;
+    letter-spacing: 0.05em;
   }
 }
 

@@ -10,6 +10,7 @@ export default {
       screens: {
         sm: { max: "767px" },
         xl: { min: "1012px" },
+        "2xl": { min: "1403px" },
       },
       colors: {
         dark: "#272727",

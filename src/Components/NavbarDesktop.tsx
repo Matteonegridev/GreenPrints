@@ -8,8 +8,8 @@ type MenuItemProps = {
 function NavbarDesktop({ menuItems }: MenuItemProps) {
   return (
     <>
-      <header className="md:bg-primary md:p-6">
-        <nav className="flex justify-around">
+      <header className="md:bg-primary md:p-6 xl:flex xl:justify-between md:flex md:justify-around">
+        <nav className="flex justify-around ">
           <ul className="flex flex-row justify-around items-center md:gap-7 ">
             {menuItems.map((links, i) => (
               <li
@@ -20,8 +20,8 @@ function NavbarDesktop({ menuItems }: MenuItemProps) {
               </li>
             ))}
           </ul>
-          <ToggleDark />
         </nav>
+        <ToggleDark />
       </header>
     </>
   );
