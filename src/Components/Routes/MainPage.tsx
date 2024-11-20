@@ -32,12 +32,12 @@ function MainPage() {
       <motion.div
         variants={variantsDiv}
         animate="entry"
-        className="flex items-center justify-around "
+        className="flex items-center justify-around pt-24 md:justify-center md:pt-3 "
       >
         <Logo stroke="#50D890" height="70.5px" width="50.2px" strokeWidth="1" />
         <h1
-          className="font-title font-medium uppercase text-4xl 
-        bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent "
+          className="font-title font-medium uppercase text-4xl md:text-6xl md:leading-none 
+        bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent md:ml-2 "
         >
           GreenPrints
         </h1>
@@ -54,10 +54,10 @@ function MainPage() {
 
       <div className="pt-8 pb-8 ">
         <MainPageImage />
-        <h1 className="font-subheading font-extrabold uppercase text-2xl pr-2 pl-2 ">
+        <h1 className="font-subheading font-extrabold uppercase text-2xl pr-2 pl-2 md:text-4xl">
           How heavy is your <span className="text-primary">footprint</span>?
         </h1>
-        <p className="font-body text-base text-pretty pt-2 pr-2 pl-2">
+        <p className="font-body text-base text-pretty pt-2 pr-2 pl-2 md:text-xl md:pt-4">
           Flying has a <strong>huge</strong> impact on our planet, producing
           more emissions in a few hours than other activities do in days.
           <br /> <br /> With our flight <strong>footprint</strong> calculator,

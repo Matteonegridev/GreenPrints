@@ -34,7 +34,7 @@ function ElementLists({ filteredElements, selectedItem }: ListProps) {
             onMouseEnter={() => setHovered(i)}
             onMouseLeave={() => setHovered(-1)}
           >
-            {item.name} {item.code} - {item.country}
+            {item.country} - {item.name} {item.code}
           </li>
         ))}
     </>

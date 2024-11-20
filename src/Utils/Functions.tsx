@@ -1,5 +1,11 @@
 import { Airport } from "../Hooks/useAirportData";
 
+const findCode = (word: string) => {
+  const regex = /\b[A-Z]{3}\b/;
+  const code = word.match(regex); // ritorna un array
+  return code?.[0];
+};
+
 export const handleCode = (
   setDestination: React.Dispatch<React.SetStateAction<string>>,
   setOrigin: React.Dispatch<React.SetStateAction<string>>,
@@ -10,8 +16,8 @@ export const handleCode = (
   setIsCalculated: React.Dispatch<React.SetStateAction<boolean>>
 ) => {
   e.preventDefault();
-  const toCode = destinationSearch?.split(" ").pop();
-  const fromCode = originSearch?.split(" ").pop();
+  const toCode = findCode(destinationSearch);
+  const fromCode = findCode(originSearch);
   setDestination(toCode || "");
   setOrigin(fromCode || "");
   if (!isCalculated) {
@@ -19,6 +25,7 @@ export const handleCode = (
       setIsCalculated(true);
     }, 500);
   }
+  console.log(fromCode, toCode);
 };
 
 export const resetInputs = (

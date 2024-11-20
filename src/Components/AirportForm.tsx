@@ -6,6 +6,7 @@ import AirportInput from "./AirportInput";
 import { useDebounce } from "use-debounce";
 import SelectPassenger from "./SelectPassenger";
 import { handleCode, resetInputs } from "../Utils/Functions";
+import Result from "./Result";
 
 function AirportForm() {
   const [origin, setOrigin] = useState("");
@@ -115,14 +116,14 @@ function AirportForm() {
   return (
     <>
       <main className="p-4 w-full">
-        <div className="p-2 pt-4 text-center">
-          <h1 className="font-subHeadings uppercase text-3xl font-bold dark:text-white">
+        <div className="p-2 pt-4 md:w-full ">
+          <h1 className="font-subHeadings uppercase text-3xl font-bold dark:text-white md:pt-10 md:text-4xl md:w-full text-center ">
             Calculate your flight emissions:
           </h1>
         </div>
-        <section className="min-h-[50dvh] p-4 m-auto mt-12 bg-white dark:bg-clearDark dark:text-white flex flex-col gap-5 shadow-md ">
+        <section className="min-h-[50dvh] p-4 m-auto mt-12 bg-white dark:bg-clearDark dark:text-white flex flex-col gap-5  shadow-md md:w-[80%]  md:gap-8">
           <AirportInput
-            placeholder="Enter departure airport/code/city"
+            placeholder="Enter departure country/airport/code"
             text="From:"
             value={originSearch}
             airportData={suggestions.origin}
@@ -133,7 +134,7 @@ function AirportForm() {
             onClick={(e) => handleClickFromList(e, setOriginSearch, "origin")}
           />
           <AirportInput
-            placeholder="Enter arrival airport/code/city"
+            placeholder="Enter arrival country/airport/code"
             text="To:"
             value={destinationSearch}
             airportData={suggestions.destination}
@@ -150,7 +151,7 @@ function AirportForm() {
             passengers={passengers}
             setPassengers={setPassengers}
           />
-          <div className="flex flex-col gap-2 pt-4 pb-4">
+          <div className="flex flex-col gap-2 pt-4 pb-4 md:pt-10">
             <button
               className="w-full bg-primary py-2 px-8 rounded-sm text-base text-white font-medium"
               id="calculate"
@@ -186,7 +187,12 @@ function AirportForm() {
             </button>
           </div>
           {isCalculated && (
-            <p>Estimated Footprint: {totalFootprint} tonnes CO2e</p>
+            <>
+              <Result
+                isCalculated={isCalculated}
+                totalFootprint={totalFootprint}
+              />
+            </>
           )}
         </section>
       </main>
