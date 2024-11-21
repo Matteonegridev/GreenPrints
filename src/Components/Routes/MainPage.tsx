@@ -52,9 +52,9 @@ function MainPage() {
         </h3>
       </motion.div>
 
-      <div className="pt-8 pb-8 xl:grid xl:grid-cols-2 xl:pt-24 xl:p-2 ">
+      <div className="pt-8 pb-8 xl:grid xl:grid-cols-2 xl:pt-24 xl:p-2 2xl:p-7 2xl:pt-14">
         <MainPageImage />
-        <div className="xl:order-1 xl:place-content-center">
+        <div className="xl:order-1 xl:place-content-center ">
           <h1 className="font-subheading font-extrabold uppercase text-2xl pr-2 pl-2 md:text-4xl xl:mb-7 xl:text-5xl">
             How heavy is your <span className="text-primary">footprint</span>?
           </h1>

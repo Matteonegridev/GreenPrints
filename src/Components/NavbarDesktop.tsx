@@ -14,7 +14,7 @@ function NavbarDesktop({ menuItems }: MenuItemProps) {
             {menuItems.map((links, i) => (
               <li
                 key={i}
-                className="font-subheading text-2xl md:text-4xl md:font-normal  md:text-white"
+                className="font-subheading text-2xl md:text-4xl md:font-normal  md:text-white 2xl:text-3xl 2xl:hover:text-clearDark 2xl:hover:transition-all 2xl:hover:duration-200 2xl:hover:ease "
               >
                 <Link to={links.href}>{links.title}</Link>
               </li>
