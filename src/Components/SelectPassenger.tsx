@@ -12,7 +12,7 @@ function SelectPassenger({ passengers, setPassengers, text }: Props) {
 
   return (
     <>
-      <label className="font-subHeadings text-2xl font-medium -mb-4 xl:text-3xl xl:leading-none ">
+      <label className=" 2xl:text-2xl font-subHeadings text-2xl font-medium -mb-4 xl:text-3xl xl:leading-none ">
         {text}
       </label>
       <input

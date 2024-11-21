@@ -86,7 +86,13 @@ export default {
             letterSpacing: "0.05em",
           },
         ],
-        "6xl": ["3.815rem"],
+        "6xl": [
+          "3.815rem",
+          {
+            lineHeight: "4rem",
+            letterSpacing: "0.03em",
+          },
+        ],
       },
       fontFamily: {
         headings: "Noto Sans",

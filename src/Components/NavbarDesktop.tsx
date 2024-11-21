@@ -8,7 +8,7 @@ type MenuItemProps = {
 function NavbarDesktop({ menuItems }: MenuItemProps) {
   return (
     <>
-      <header className="md:bg-primary md:p-6 xl:flex xl:justify-between md:flex md:justify-around">
+      <header className="md:bg-primary md:p-4 xl:flex xl:justify-between md:flex md:justify-around shadow-sm">
         <nav className="flex justify-around ">
           <ul className="flex flex-row justify-around items-center md:gap-7 ">
             {menuItems.map((links, i) => (

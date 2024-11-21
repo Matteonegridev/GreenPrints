@@ -30,7 +30,7 @@ function InfoAbout() {
     <section className="grid grid-cols-2 gap-4 px-4 py-6 md:place-items-center md:gap-6   xl:flex xl:justify-evenly">
       {infoUsers.map((info) => (
         <div
-          className=" md:w-[300px] md:min-h-[120px]  bg-white dark:bg-clearDark shadow-lg rounded-lg p-2 flex flex-col gap-2 text-center xl:p-1"
+          className=" md:w-[300px] md:min-h-[120px]  bg-white dark:bg-clearDark shadow-md rounded-lg p-2 flex flex-col gap-2 text-center xl:p-1 2xl:cursor-pointer 2xl:hover:-translate-y-1 transition-all duration-200 ease-in-out 2xl:hover:shadow-xl"
           key={info.id}
         >
           <h1 className="font-title text-primary text-xl dark:text-tertiary md:pt-1 xl:text-2xl ">

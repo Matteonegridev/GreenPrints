@@ -105,7 +105,9 @@ function FaqQuestion({ question, answer }: Props) {
         animate={isOpen ? "open" : "closed"}
         className="py-2 overflow-hidden"
       >
-        <p className="text-body text-base xl:text-xl xl:pr-6">{answer}</p>
+        <p className="text-body text-base xl:text-xl xl:pr-6 2xl:pr-10 2xl:text-base">
+          {answer}
+        </p>
       </motion.div>
     </div>
   );
