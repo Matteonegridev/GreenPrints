@@ -12,13 +12,13 @@ function SelectPassenger({ passengers, setPassengers, text }: Props) {
 
   return (
     <>
-      <label className="font-subHeadings text-2xl font-medium -mb-4">
+      <label className="font-subHeadings text-2xl font-medium -mb-4 xl:text-3xl xl:leading-none ">
         {text}
       </label>
       <input
         value={passengers}
         onChange={handlePassengerChange}
-        className="dark:bg-clearDark dark:border-primary dark:focus:border-2 px-1 py-2 outline-none border border-secondary rounded-md focus:border-2 "
+        className="dark:bg-clearDark dark:border-primary dark:focus:border-2 px-1 py-2 outline-none border border-secondary rounded-md focus:border-2 xl:py-4 xl:text-2xl xl:pl-2"
         type="number"
       />
     </>

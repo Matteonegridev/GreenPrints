@@ -66,14 +66,14 @@ const faq = [
 
 function Faq() {
   return (
-    <main className="px-2 py-4">
-      <h1 className="text-center font-headings font-black pt-5 text-3xl dark:text-white">
+    <main className="px-2 pt-32">
+      <h1 className="text-center font-headings font-black pt-5 text-3xl dark:text-white xl:text-4xl xl:pb-6">
         Frequently Asked Question
       </h1>
       <div className="pl-3 pt-8 flex justify-start gap-3 [&>*]:dark:text-tertiary [&>*]:text-secondary">
         <Link to={"/calculator"}>
-          <i className="fa-solid fa-chevron-left text-xl"></i>
-          <span className="font-subheading uppercase text-2xl font-semibold ml-3">
+          <i className="fa-solid fa-chevron-left text-xl xl:text-3xl"></i>
+          <span className="font-subheading uppercase text-2xl font-semibold ml-3 xl:text-3xl">
             Calculate!
           </span>
         </Link>

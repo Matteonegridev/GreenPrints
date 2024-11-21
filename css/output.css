@@ -897,6 +897,10 @@ video {
   padding: 1.25rem;
 }
 
+.p-8{
+  padding: 2rem;
+}
+
 .px-1{
   padding-left: 0.25rem;
   padding-right: 0.25rem;
@@ -952,6 +956,11 @@ video {
   padding-bottom: 1.75rem;
 }
 
+.px-7{
+  padding-left: 1.75rem;
+  padding-right: 1.75rem;
+}
+
 .pb-2{
   padding-bottom: 0.5rem;
 }
@@ -990,6 +999,10 @@ video {
 
 .pt-3{
   padding-top: 0.75rem;
+}
+
+.pt-32{
+  padding-top: 8rem;
 }
 
 .pt-4{
@@ -1059,7 +1072,7 @@ video {
 }
 
 .text-faq{
-  font-size: 1.35rem;
+  font-size: 1.25rem;
   line-height: 1.5rem;
   letter-spacing: 0.05em;
 }
@@ -1401,6 +1414,12 @@ video {
   }
 }
 
+@media (min-width: 544px) and (max-width: 768px){
+  .lg\:w-\[40ch\]{
+    width: 40ch;
+  }
+}
+
 @media (min-width: 1012px){
   .xl\:order-1{
     order: 1;
@@ -1434,8 +1453,16 @@ video {
     width: 100%;
   }
 
+  .xl\:cursor-pointer{
+    cursor: pointer;
+  }
+
   .xl\:grid-cols-2{
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .xl\:flex-row{
+    flex-direction: row;
   }
 
   .xl\:place-content-center{
@@ -1454,6 +1481,10 @@ video {
     justify-content: space-evenly;
   }
 
+  .xl\:gap-6{
+    gap: 1.5rem;
+  }
+
   .xl\:p-1{
     padding: 0.25rem;
   }
@@ -1466,9 +1497,43 @@ video {
     padding: 0.75rem;
   }
 
+  .xl\:p-4{
+    padding: 1rem;
+  }
+
+  .xl\:p-7{
+    padding: 1.75rem;
+  }
+
+  .xl\:py-3{
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+  }
+
   .xl\:py-4{
     padding-top: 1rem;
     padding-bottom: 1rem;
+  }
+
+  .xl\:px-8{
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
+  .xl\:pb-6{
+    padding-bottom: 1.5rem;
+  }
+
+  .xl\:pl-12{
+    padding-left: 3rem;
+  }
+
+  .xl\:pl-2{
+    padding-left: 0.5rem;
+  }
+
+  .xl\:pr-5{
+    padding-right: 1.25rem;
   }
 
   .xl\:pt-24{
@@ -1479,16 +1544,8 @@ video {
     padding-top: 1.25rem;
   }
 
-  .xl\:pl-6{
-    padding-left: 1.5rem;
-  }
-
-  .xl\:pl-10{
-    padding-left: 2.5rem;
-  }
-
-  .xl\:pl-12{
-    padding-left: 3rem;
+  .xl\:pr-6{
+    padding-right: 1.5rem;
   }
 
   .xl\:text-2xl{
@@ -1503,13 +1560,41 @@ video {
     letter-spacing: 0.02em;
   }
 
+  .xl\:text-4xl{
+    font-size: 2.441rem;
+    line-height: 2.2rem;
+    letter-spacing: 0.02em;
+  }
+
   .xl\:text-5xl{
     font-size: 3.052rem;
     line-height: 3.2rem;
     letter-spacing: 0.05em;
   }
 
+  .xl\:text-faq2x{
+    font-size: 1.563rem;
+    line-height: 1.5rem;
+    letter-spacing: 0.05em;
+  }
+
   .xl\:text-xl{
+    font-size: 1.35rem;
+    line-height: 2rem;
+    letter-spacing: 0.05em;
+  }
+
+  .xl\:leading-none{
+    line-height: 1;
+  }
+
+  .xl\:placeholder\:text-xl::-moz-placeholder{
+    font-size: 1.35rem;
+    line-height: 2rem;
+    letter-spacing: 0.05em;
+  }
+
+  .xl\:placeholder\:text-xl::placeholder{
     font-size: 1.35rem;
     line-height: 2rem;
     letter-spacing: 0.05em;

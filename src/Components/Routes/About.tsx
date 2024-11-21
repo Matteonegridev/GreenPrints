@@ -4,7 +4,7 @@ import InfoAbout from "../InfoAbout";
 
 function About() {
   return (
-    <main className="px-4 py-7 sm:pt-32">
+    <main className="px-4 py-7 sm:pt-32 xl:px-8">
       <h6 className="py-2 text-xl font-headings capitalize font-semibold text-gray-500">
         about us
       </h6>

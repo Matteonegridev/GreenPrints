@@ -9,6 +9,7 @@ export default {
       },
       screens: {
         sm: { max: "767px" },
+        lg: { min: "544px", max: "768px" },
         xl: { min: "1012px" },
         "2xl": { min: "1403px" },
       },
@@ -44,7 +45,14 @@ export default {
           },
         ],
         faq: [
-          "1.35rem",
+          "1.25rem",
+          {
+            lineHeight: "1.5rem",
+            letterSpacing: "0.05em",
+          },
+        ],
+        faq2x: [
+          "1.563rem",
           {
             lineHeight: "1.5rem",
             letterSpacing: "0.05em",
