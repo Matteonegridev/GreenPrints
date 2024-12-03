@@ -92,10 +92,10 @@ function FooterForm() {
         >
           Sign In!
         </button>
-
         <motion.p
           initial="close"
           variants={variantsMessage}
+          style={isSignedIn ? { display: "block" } : { display: "none" }}
           animate={isSignedIn ? "open" : "close"}
           className="font-subheading text-xl text-white 2xl:text-3xl"
         >
