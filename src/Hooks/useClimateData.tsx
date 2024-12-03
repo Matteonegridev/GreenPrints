@@ -31,7 +31,7 @@ const getClimateData = async ({
 
   console.log(
     "Estimated Footprint (tonnes CO2e):",
-    result.data.footprint / 1000
+    result.data.footprint / 1000,
   );
 
   console.log("data: ", result.data);
@@ -41,17 +41,13 @@ const getClimateData = async ({
 const useClimateData = (
   origin: string,
   destination: string,
-  passengers: number
+  passengers: number,
 ) => {
-  // const [footprint, setFootprint] = useState(null);
   const { data, isLoading, error } = useQuery({
     queryKey: ["climateData", { origin, destination, passengers }],
     queryFn: () => getClimateData({ origin, destination, passengers }),
     enabled: !!origin && !!destination,
   });
-
-  //todo: useMutation per calcolare il footprint con piu passeggeri:
-  // codice qui...
 
   return { data, isLoading, error };
 };

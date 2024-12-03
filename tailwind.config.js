@@ -100,6 +100,9 @@ export default {
         title: "Gasoek One",
         body: "Rubik",
       },
+      width: {
+        footerWidth: "calc(100% + 1.3px)",
+      },
     },
   },
   plugins: [],
