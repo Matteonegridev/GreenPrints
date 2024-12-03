@@ -14,15 +14,11 @@ function FooterForm() {
     console.log("Form Data Submitted:", payload);
 
     try {
-      const response = await axios.post(
-        "http://localhost:5173/server/formData.json",
-        payload,
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
+      const response = await axios.post("/api", payload, {
+        headers: {
+          "Content-Type": "application/json",
         },
-      );
+      });
 
       return response.data;
     } catch (error) {
