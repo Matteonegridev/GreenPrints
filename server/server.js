@@ -15,18 +15,18 @@ app.post("/", (req, res) => {
   console.log("Received data:", data);
   res.status(200).send({ status: "received", data });
 
+  //! NODE.JS fs per gestire il file json:
   fs.readFile("formData.json", "utf8", (err, fileData) => {
     let jsonData = [];
 
     if (!err && fileData) {
-      // If the file exists and has content, parse the content
       jsonData = JSON.parse(fileData);
     }
 
-    // Append the new data to the array
+    // pusha i dati all'array:
     jsonData.push(data);
 
-    // Write the updated array back to the file
+    // L'array aggiornato viene scritto nel file:
     fs.writeFile(
       "formData.json",
       JSON.stringify(jsonData, null, 2),
