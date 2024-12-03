@@ -65,20 +65,20 @@ function FooterForm() {
   }, []);
 
   return (
-    <div className="pt-5">
+    <div className="pt-5 xl:pt-10 2xl:m-auto 2xl:w-2/4">
       <form
-        className="flex flex-col items-center justify-center gap-3"
+        className="flex flex-col items-center justify-center gap-5"
         onSubmit={(e) => handleSubmit(e)}
       >
         <label
-          className="-mb-2 font-body text-base font-bold text-gray-500 2xl:mb-0 2xl:text-xl"
+          className="-mb-2 font-body text-base font-bold text-gray-500 2xl:mb-0 2xl:text-2xl"
           htmlFor="email"
         >
           Subscribe to our newsletter
         </label>
         <input
           ref={(el) => (clearInput.current = el)}
-          className="rounded-md border-none px-4 py-2 font-body text-base text-clearDark caret-tertiary outline-none transition-all duration-200 ease-linear focus:shadow-lg 2xl:mb-3 2xl:w-full 2xl:py-3"
+          className="rounded-sm border-none px-4 py-2 font-body text-base text-clearDark caret-tertiary shadow-inner outline-none transition-all duration-200 ease-linear focus:shadow-lg 2xl:w-2/4 2xl:py-3"
           type="email"
           name="email"
           id="email"
@@ -86,21 +86,23 @@ function FooterForm() {
           required
           autoComplete="off"
         />
+
         <button
-          className="rounded-sm bg-secondary px-[0.8em] py-[0.3em] font-body font-bold text-white shadow-sm transition-all duration-200 ease-in 2xl:w-[10rem] 2xl:text-xl 2xl:hover:bg-white 2xl:hover:text-secondary 2xl:hover:shadow-lg 2xl:active:shadow-sm"
+          className="rounded-sm bg-secondary px-[0.8em] py-[0.3em] font-body font-bold text-white shadow-sm transition-all duration-200 ease-in 2xl:w-[15rem] 2xl:text-xl 2xl:hover:bg-white 2xl:hover:text-secondary 2xl:hover:shadow-lg 2xl:active:shadow-sm"
           type="submit"
         >
           Sign In!
         </button>
-        <motion.p
+        <motion.div
           initial="close"
           variants={variantsMessage}
           style={isSignedIn ? { display: "block" } : { display: "none" }}
           animate={isSignedIn ? "open" : "close"}
-          className="font-subheading text-xl text-white 2xl:text-3xl"
         >
-          Thanks for subscribing!
-        </motion.p>
+          <p className="font-subheading text-xl text-white 2xl:text-3xl">
+            Thanks for subscribing!
+          </p>
+        </motion.div>
       </form>
     </div>
   );

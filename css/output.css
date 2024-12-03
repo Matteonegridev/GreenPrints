@@ -852,6 +852,10 @@ video {
   gap: 1.25rem;
 }
 
+.gap-7{
+  gap: 1.75rem;
+}
+
 .overflow-hidden{
   overflow: hidden;
 }
@@ -963,6 +967,11 @@ video {
 .bg-white{
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+}
+
+.bg-slate-100{
+  --tw-bg-opacity: 1;
+  background-color: rgb(241 245 249 / var(--tw-bg-opacity));
 }
 
 .bg-gradient-to-r{
@@ -1299,6 +1308,12 @@ video {
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
+.shadow-inner{
+  --tw-shadow: inset 0 2px 4px 0 rgb(0 0 0 / 0.05);
+  --tw-shadow-colored: inset 0 2px 4px 0 var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+
 .outline-none{
   outline: 2px solid transparent;
   outline-offset: 2px;
@@ -1457,6 +1472,14 @@ video {
     padding-top: 1.5rem;
   }
 
+  .sm\:pt-24{
+    padding-top: 6rem;
+  }
+
+  .sm\:pt-16{
+    padding-top: 4rem;
+  }
+
   .sm\:text-center{
     text-align: center;
   }
@@ -1587,6 +1610,10 @@ video {
     padding-top: 1.5rem;
   }
 
+  .md\:pt-20{
+    padding-top: 5rem;
+  }
+
   .md\:text-4xl{
     font-size: 2.441rem;
     line-height: 2.2rem;
@@ -1652,6 +1679,11 @@ video {
 
   .xl\:h-96{
     height: 24rem;
+  }
+
+  .xl\:h-fit{
+    height: -moz-fit-content;
+    height: fit-content;
   }
 
   .xl\:w-\[15rem\]{
@@ -1738,6 +1770,11 @@ video {
     padding-bottom: 1rem;
   }
 
+  .xl\:py-1{
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
+  }
+
   .xl\:pb-6{
     padding-bottom: 1.5rem;
   }
@@ -1760,6 +1797,22 @@ video {
 
   .xl\:pt-5{
     padding-top: 1.25rem;
+  }
+
+  .xl\:pt-44{
+    padding-top: 11rem;
+  }
+
+  .xl\:pt-36{
+    padding-top: 9rem;
+  }
+
+  .xl\:pt-7{
+    padding-top: 1.75rem;
+  }
+
+  .xl\:pt-10{
+    padding-top: 2.5rem;
   }
 
   .xl\:text-2xl{
@@ -1889,6 +1942,26 @@ video {
     width: 15rem;
   }
 
+  .\32xl\:w-\[20rem\]{
+    width: 20rem;
+  }
+
+  .\32xl\:w-4\/5{
+    width: 80%;
+  }
+
+  .\32xl\:w-2\/4{
+    width: 50%;
+  }
+
+  .\32xl\:w-1\/2{
+    width: 50%;
+  }
+
+  .\32xl\:w-2\/3{
+    width: 66.666667%;
+  }
+
   .\32xl\:cursor-pointer{
     cursor: pointer;
   }
@@ -1953,6 +2026,10 @@ video {
 
   .\32xl\:pt-44{
     padding-top: 11rem;
+  }
+
+  .\32xl\:pt-48{
+    padding-top: 12rem;
   }
 
   .\32xl\:text-2xl{
