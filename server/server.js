@@ -12,8 +12,6 @@ app.use(express.json());
 
 app.post("/", (req, res) => {
   const data = req.body;
-  console.log("Received data:", data);
-  res.status(200).send({ status: "received", data });
 
   //! NODE.JS fs per gestire il file json:
   fs.readFile("formData.json", "utf8", (err, fileData) => {
