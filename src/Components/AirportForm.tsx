@@ -11,6 +11,7 @@ import Result from "./Result";
 function AirportForm() {
   const [origin, setOrigin] = useState("");
   const [destination, setDestination] = useState("");
+  // Stato per il suggerimento per l'autocompletamento:
   const [suggestions, setSuggestions] = useState<{
     origin: Airport[];
     destination: Airport[];
@@ -76,6 +77,7 @@ function AirportForm() {
       return;
     }
 
+    // Filtra tra i dati by nome, paese e code aeroporto:
     const filteredElements = data.filter(
       (values: Airport) =>
         values.name.toLowerCase().includes(trimmedQuery.toLowerCase()) ||
