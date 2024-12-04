@@ -62,6 +62,7 @@ function FooterForm() {
     }
   };
 
+  // Email Validation:
   const validateEmail = (email: string) => {
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return regex.test(email);
@@ -73,19 +74,23 @@ function FooterForm() {
     const formData = new FormData(form);
     const email = emailInput.current?.value || "";
 
+    // Se mail non valida:
     if (!validateEmail(email)) {
       setMessage("Invalid Address");
       setIsEmailValid(false);
 
+      // Fa scomparire il messaggio di errore dopo 3 secondi:
       setTimeout(() => {
         setMessage(null);
       }, 3000);
       return;
     }
+    // Se email valida crea il formData, fa scattare il messaggio di ringraziamento, messaggio di errore tolto:
     setIsEmailValid(true);
     setMessage(null);
     formAction(formData);
 
+    // Svuota input:
     if (emailInput.current) {
       emailInput.current.value = "";
     }
@@ -129,7 +134,7 @@ function FooterForm() {
           </motion.p>
         )}
         <button
-          className="rounded-sm bg-secondary px-[0.8em] py-[0.3em] font-body font-bold text-white shadow-sm transition-all duration-200 ease-in 2xl:w-[15rem] 2xl:text-xl 2xl:hover:bg-white 2xl:hover:text-secondary 2xl:hover:shadow-lg 2xl:active:shadow-sm"
+          className="w-[12rem] rounded-sm bg-secondary px-[0.8em] py-[0.4em] font-body font-bold text-white shadow-sm transition-all duration-200 ease-in 2xl:text-xl 2xl:hover:bg-white 2xl:hover:text-secondary 2xl:hover:shadow-lg 2xl:active:shadow-sm"
           type="submit"
         >
           Sign In!
