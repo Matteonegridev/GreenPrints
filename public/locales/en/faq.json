@@ -1,0 +1,52 @@
+{
+  "titleFaq": "Frequently Asked Question",
+  "calcButtonFaq": "Calculate!",
+  "one": {
+    "question": "What is a carbon footprint?",
+    "answer": "A carbon footprint measures the total greenhouse gases (GHGs) you emit directly or indirectly, typically expressed in carbon dioxide equivalent (CO2e). It includes activities like driving, using electricity, and consuming goods and services."
+  },
+
+  "two": {
+    "question": "Why should I calculate my footprint?",
+    "answer": "Understanding your footprint helps you identify areas where you can reduce emissions, contribute to combating climate change, and adopt a more sustainable lifestyle."
+  },
+
+  "three": {
+    "question": "Is the data I provide safe and private?",
+    "answer": "Yes, your data is securely stored and only used for calculating your footprint. We adhere to strict data privacy standards and do not share your information with third parties."
+  },
+
+  "four": {
+    "question": "What’s the average carbon footprint per person?",
+    "answer": "The global average is about 4.5 tons of CO2e per year, but it varies widely by country. For example, the U.S. average is approximately 16 tons, while some countries are under 1 ton."
+  },
+  "five": {
+    "question": "How does reducing my footprint help the planet?",
+    "answer": "Reducing your footprint decreases the amount of GHGs released into the atmosphere, helping to mitigate climate change, preserve ecosystems, and improve air quality."
+  },
+
+  "six": {
+    "question": "What’s the difference between carbon-neutral and net-zero?",
+    "answer": "Carbon-neutral: Balancing emissions with offsets. Net-zero: Minimizing emissions as much as possible and offsetting the rest."
+  },
+
+  "seven": {
+    "question": "What is Carbon Insetting?",
+    "answer": "Insetting refers to the financing of climate protection projects along a company’s own value chain that demonstrably reduce or sequester emissions and thereby achieve a positive impact on the communities, landscapes and ecosystems associated with the value chain."
+  },
+
+  "eight": {
+    "question": "What footprint result should I be aiming for?",
+    "answer": "To avoid the worst impacts of climate change, we need to keep global warming below 1.5°C. If everyone on the planet were allocated a ‘fair share’ of global carbon emissions, each person should have a footprint of around 1 tonne by the year 2050 – as the “government spend” is already more than twice this level it is obviously not possible yet to get to this level."
+  },
+
+  "nine": {
+    "question": "What is climate change?",
+    "answer": "Climate change refers to long-term shifts in temperatures and weather patterns, primarily caused by human activities like burning fossil fuels, deforestation, and industrial processes, which increase greenhouse gas emissions."
+  },
+
+  "ten": {
+    "question": "How does my carbon footprint affect climate change?",
+    "answer": "Every activity contributing to your carbon footprint releases greenhouse gases into the atmosphere, trapping heat and causing global temperatures to rise. Reducing your emissions helps mitigate these effects."
+  }
+}

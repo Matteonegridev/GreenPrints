@@ -1,0 +1,52 @@
+{
+  "titleFaq": "Domande Frequenti",
+  "calcButtonFaq": "Calcola!",
+  "one": {
+    "question": "Cos'è l'impronta di carbonio?",
+    "answer": "L'impronta di carbonio misura i gas serra (GHG) che emetti direttamente o indirettamente, generalmente espressi in equivalente anidride carbonica (CO2e). Include attività come guidare, usare l'elettricità e consumare beni e servizi."
+  },
+
+  "two": {
+    "question": "Perché dovrei calcolare la mia impronta?",
+    "answer": "Capire la tua impronta ti aiuta a individuare le aree in cui puoi ridurre le emissioni, contribuire a combattere il cambiamento climatico e adottare uno stile di vita più sostenibile."
+  },
+
+  "three": {
+    "question": "I dati che fornisco sono sicuri e privati?",
+    "answer": "Sì, i tuoi dati sono conservati in modo sicuro e utilizzati solo per calcolare la tua impronta. Rispettiamo rigorosi standard di privacy dei dati e non condividiamo le tue informazioni con terze parti."
+  },
+
+  "four": {
+    "question": "Qual è l'impronta di carbonio media per persona?",
+    "answer": "La media globale è di circa 4,5 tonnellate di CO2e all'anno, ma varia notevolmente da paese a paese. Ad esempio, la media degli Stati Uniti è di circa 16 tonnellate, mentre alcuni paesi sono sotto 1 tonnellata."
+  },
+  "five": {
+    "question": "Come ridurre la mia impronta aiuta il pianeta?",
+    "answer": "Ridurre la tua impronta diminuisce la quantità di GHG emessi nell'atmosfera, contribuendo a mitigare il cambiamento climatico, preservare gli ecosistemi e migliorare la qualità dell'aria."
+  },
+
+  "six": {
+    "question": "Qual è la differenza tra carbon-neutral e net-zero?",
+    "answer": "Carbon-neutral: Bilanciare le emissioni con le compensazioni. Net-zero: Minimizzare le emissioni il più possibile e compensare il resto."
+  },
+
+  "seven": {
+    "question": "Cos'è il Carbon Insetting?",
+    "answer": "Il Carbon Insetting si riferisce al finanziamento di progetti di protezione climatica lungo la catena del valore di un'azienda che riducono o sequestrano le emissioni, ottenendo così un impatto positivo sulle comunità, paesaggi ed ecosistemi associati alla catena del valore."
+  },
+
+  "eight": {
+    "question": "Qual è il risultato dell'impronta che dovrei cercare di raggiungere?",
+    "answer": "Per evitare gli impatti più gravi del cambiamento climatico, dobbiamo mantenere il riscaldamento globale sotto i 1,5°C. Se a ogni persona sul pianeta fosse assegnata una 'quota equa' delle emissioni globali di carbonio, ogni persona dovrebbe avere un'impronta di circa 1 tonnellata entro il 2050 – poiché la spesa governativa è già più di due volte questo livello, non è ancora possibile raggiungere questo obiettivo."
+  },
+
+  "nine": {
+    "question": "Cos'è il cambiamento climatico?",
+    "answer": "Il cambiamento climatico si riferisce ai cambiamenti a lungo termine nelle temperature e nei modelli meteorologici, causati principalmente da attività umane come la combustione di combustibili fossili, la deforestazione e i processi industriali, che aumentano le emissioni di gas serra."
+  },
+
+  "ten": {
+    "question": "Come la mia impronta di carbonio influisce sul cambiamento climatico?",
+    "answer": "Ogni attività che contribuisce alla tua impronta di carbonio rilascia gas serra nell'atmosfera, intrappolando il calore e facendo aumentare le temperature globali. Ridurre le tue emissioni aiuta a mitigare questi effetti."
+  }
+}

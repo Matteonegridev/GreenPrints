@@ -37,7 +37,7 @@ function InfoAbout() {
           className="flex flex-col gap-2 rounded-lg bg-white p-2 text-center shadow-md transition-all duration-200 ease-in-out md:min-h-[120px] md:w-[300px] xl:p-1 2xl:cursor-pointer 2xl:hover:-translate-y-1 2xl:hover:shadow-xl dark:bg-clearDark"
           key={info.id}
         >
-          <h1 className="font-title text-xl text-primary md:pt-1 xl:text-2xl dark:text-tertiary">
+          <h1 className="font-title text-xl text-primary md:pt-2 xl:text-2xl dark:text-tertiary">
             {info.stat}
           </h1>
           <small className="mt-auto flex-grow-0 font-body text-clearDark md:flex-grow md:place-content-center md:leading-none dark:text-white">
