@@ -3,15 +3,6 @@ import { initReactI18next } from "react-i18next";
 import LanguageDetector from "i18next-browser-languagedetector";
 import HttpBackend from "i18next-http-backend";
 
-const resources = {
-  en: {
-    translation: {},
-  },
-  it: {
-    translation: {},
-  },
-};
-
 i18n
   .use(initReactI18next)
   .use(HttpBackend)
@@ -23,7 +14,7 @@ i18n
     backend: {
       loadPath: "/locales/{{lng}}/{{ns}}.json",
     },
-    ns: ["main"],
+    ns: ["main", "form", "about", "footer", "faq"],
     interpolation: {
       escapeValue: false,
     },

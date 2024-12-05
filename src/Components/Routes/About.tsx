@@ -1,29 +1,26 @@
+import { Trans, useTranslation } from "react-i18next";
 import ImageMdAbout from "../../Utils/ImageMdAbout";
 
 import InfoAbout from "../InfoAbout";
 
 function About() {
+  const { t } = useTranslation("about");
+
   return (
     <main className="px-4 py-7 sm:pt-32 xl:px-8">
-      <h6 className="py-2 text-xl font-headings capitalize font-semibold text-gray-500">
-        about us
+      <h6 className="py-2 font-headings text-xl font-semibold capitalize text-gray-500">
+        {t("about")}
       </h6>
-      <h1 className="font-bold text-4xl py-5 font-headings dark:text-white">
-        Our Mission:
+      <h1 className="py-5 font-headings text-4xl font-bold dark:text-white">
+        {t("ourMission")}
       </h1>
-      <div className="border border-s-4 dark:border-tertiary border-primary rounded-xl p-4 text-balanced my-4 dark:text-white md:grid md:grid-cols-2 2xl:w-[80%] 2xl:m-auto 2xl:border-none ">
-        <div className="xl:pl-12  2xl:pl-2 pt-4">
-          <p className="text-secondary font-subheading text-base font-semibold xl:text-2xl ">
-            About GreenPrints
+      <div className="text-balanced my-4 rounded-xl border border-s-4 border-primary p-4 md:grid md:grid-cols-2 2xl:m-auto 2xl:w-[80%] 2xl:border-none dark:border-tertiary dark:text-white">
+        <div className="pt-4 xl:pl-12 2xl:pl-2">
+          <p className="font-subheading text-base font-semibold text-secondary xl:text-2xl">
+            {t("aboutGreenprints")}
           </p>
-          <p className="text-base font-body hyphens-auto pt-3 text-pretty">
-            At <strong>GreenPrints</strong>, we are committed to empowering
-            individuals and organizations to make informed, sustainable choices.
-            Our mission is to shine a light on the environmental impact of air
-            travel by providing accurate CO₂ emissions calculations based on
-            flight routes. Whether you're a frequent traveler or planning a
-            one-time trip, our easy-to-use platform helps you understand the
-            carbon footprint of your journey.
+          <p className="hyphens-auto text-pretty pt-3 font-body text-base">
+            <Trans i18nKey="mainText" ns="about" />
           </p>
         </div>
         <ImageMdAbout />

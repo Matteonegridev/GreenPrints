@@ -654,6 +654,14 @@ video {
   margin-top: 3rem;
 }
 
+.mb-auto{
+  margin-bottom: auto;
+}
+
+.mt-auto{
+  margin-top: auto;
+}
+
 .block{
   display: block;
 }
@@ -1097,14 +1105,6 @@ video {
   padding-top: 2rem;
 }
 
-.pt-44{
-  padding-top: 11rem;
-}
-
-.pt-28{
-  padding-top: 7rem;
-}
-
 .text-center{
   text-align: center;
 }
@@ -1376,16 +1376,16 @@ video {
     padding-top: 4rem;
   }
 
+  .sm\:pt-28{
+    padding-top: 7rem;
+  }
+
   .sm\:pt-32{
     padding-top: 8rem;
   }
 
   .sm\:pt-6{
     padding-top: 1.5rem;
-  }
-
-  .sm\:pt-28{
-    padding-top: 7rem;
   }
 
   .sm\:text-5xl{
