@@ -3,13 +3,14 @@ type LogoProp = {
   width: string;
   height: string;
   strokeWidth: string;
+  fill: string;
 };
 
-function Logo({ stroke, width, height, strokeWidth }: LogoProp) {
+function Logo({ stroke, width, height, strokeWidth, fill }: LogoProp) {
   return (
     <svg
       stroke={stroke}
-      fill="#50D890"
+      fill={fill}
       strokeWidth={strokeWidth}
       strokeMiterlimit="10"
       width={width}

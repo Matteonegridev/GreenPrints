@@ -25,7 +25,7 @@ function ElementLists({ filteredElements, selectedItem }: ListProps) {
         filteredElements.map((item, i) => (
           <li
             ref={(el) => (selectRef.current[i] = el)}
-            className={`p-2 cursor-pointer text-base border-b  border-dark ${
+            className={`p-2 cursor-pointer text-base border-b  border-dark xl:text-xl xl:py-3 ${
               selectedItem === i || hovered === i
                 ? "bg-secondary text-white rounded-sm"
                 : ""

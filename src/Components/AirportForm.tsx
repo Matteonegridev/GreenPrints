@@ -11,6 +11,7 @@ import Result from "./Result";
 function AirportForm() {
   const [origin, setOrigin] = useState("");
   const [destination, setDestination] = useState("");
+  // Stato per il suggerimento per l'autocompletamento:
   const [suggestions, setSuggestions] = useState<{
     origin: Airport[];
     destination: Airport[];
@@ -68,7 +69,7 @@ function AirportForm() {
   const handleFilterItems = (
     data: Airport[],
     query: string,
-    type: "origin" | "destination"
+    type: "origin" | "destination",
   ) => {
     const trimmedQuery = query.trim();
     if (trimmedQuery === "") {
@@ -76,11 +77,12 @@ function AirportForm() {
       return;
     }
 
+    // Filtra tra i dati by nome, paese e code aeroporto:
     const filteredElements = data.filter(
       (values: Airport) =>
         values.name.toLowerCase().includes(trimmedQuery.toLowerCase()) ||
         values.country.toLowerCase().includes(trimmedQuery.toLowerCase()) ||
-        values.code.toLowerCase().includes(trimmedQuery.toLowerCase())
+        values.code.toLowerCase().includes(trimmedQuery.toLowerCase()),
     );
     setSuggestions((prev) => ({ ...prev, [type]: filteredElements }));
   };
@@ -88,7 +90,7 @@ function AirportForm() {
   const handleClickFromList = (
     e: React.MouseEvent<HTMLUListElement>,
     setSearch: React.Dispatch<React.SetStateAction<string>>,
-    type: "origin" | "destination"
+    type: "origin" | "destination",
   ) => {
     const li = (e.target as HTMLElement).closest("li");
     if (li) {
@@ -103,7 +105,7 @@ function AirportForm() {
 
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement>,
-    type: "origin" | "destination"
+    type: "origin" | "destination",
   ) => {
     const value = e.target.value;
     if (type === "origin") {
@@ -115,13 +117,13 @@ function AirportForm() {
 
   return (
     <>
-      <main className="p-4 w-full">
-        <div className="p-2 pt-4 md:w-full ">
-          <h1 className="font-subHeadings uppercase text-3xl font-bold dark:text-white md:pt-10 md:text-4xl md:w-full text-center ">
+      <main className="w-full p-4">
+        <div className="p-2 pt-4 md:w-full">
+          <h1 className="font-subHeadings text-center text-3xl font-bold uppercase md:w-full md:pt-10 md:text-4xl dark:text-white">
             Calculate your flight emissions:
           </h1>
         </div>
-        <section className="min-h-[50dvh] p-4 m-auto mt-12 bg-white dark:bg-clearDark dark:text-white flex flex-col gap-5  shadow-md md:w-[80%]  md:gap-8">
+        <section className="m-auto mt-12 flex min-h-[50dvh] flex-col gap-5 bg-white p-4 shadow-md md:w-[80%] md:gap-8 xl:p-7 dark:bg-clearDark dark:text-white">
           <AirportInput
             placeholder="Enter departure country/airport/code"
             text="From:"
@@ -151,9 +153,9 @@ function AirportForm() {
             passengers={passengers}
             setPassengers={setPassengers}
           />
-          <div className="flex flex-col gap-2 pt-4 pb-4 md:pt-10">
+          <div className="flex flex-col gap-2 pb-4 pt-4 md:pt-10 xl:flex-row xl:gap-6">
             <button
-              className="w-full bg-primary py-2 px-8 rounded-sm text-base text-white font-medium"
+              className="w-full rounded-sm bg-primary px-8 py-2 text-base font-medium text-white xl:py-4 xl:text-2xl"
               id="calculate"
               disabled={isCalculated || !fieldNotEmpty}
               onClick={(e) =>
@@ -164,14 +166,14 @@ function AirportForm() {
                   originSearch,
                   destinationSearch,
                   isCalculated,
-                  setIsCalculated
+                  setIsCalculated,
                 )
               }
             >
               Calculate
             </button>
             <button
-              className="w-full bg-tertiary py-2 px-8 rounded-sm text-base text-white font-medium"
+              className="w-full rounded-sm bg-tertiary px-8 py-2 text-base font-medium text-white xl:py-4 xl:text-2xl"
               id="reset"
               onClick={() =>
                 resetInputs(
@@ -179,7 +181,7 @@ function AirportForm() {
                   setOriginSearch,
                   setDestinationSearch,
                   setIsCalculated,
-                  setPassengers
+                  setPassengers,
                 )
               }
             >

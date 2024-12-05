@@ -4,19 +4,19 @@ import InfoAbout from "../InfoAbout";
 
 function About() {
   return (
-    <main className="px-4 py-7 sm:pt-32">
+    <main className="px-4 py-7 sm:pt-32 xl:px-8">
       <h6 className="py-2 text-xl font-headings capitalize font-semibold text-gray-500">
         about us
       </h6>
       <h1 className="font-bold text-4xl py-5 font-headings dark:text-white">
         Our Mission:
       </h1>
-      <div className="border border-s-4 dark:border-tertiary border-primary rounded-xl p-4 text-balanced my-4 dark:text-white md:grid md:grid-cols-2">
-        <div>
-          <small className="text-secondary font-subheading text-base font-semibold ">
+      <div className="border border-s-4 dark:border-tertiary border-primary rounded-xl p-4 text-balanced my-4 dark:text-white md:grid md:grid-cols-2 2xl:w-[80%] 2xl:m-auto 2xl:border-none ">
+        <div className="xl:pl-12  2xl:pl-2 pt-4">
+          <p className="text-secondary font-subheading text-base font-semibold xl:text-2xl ">
             About GreenPrints
-          </small>
-          <p className="text-base font-body hyphens-auto pt-3 ">
+          </p>
+          <p className="text-base font-body hyphens-auto pt-3 text-pretty">
             At <strong>GreenPrints</strong>, we are committed to empowering
             individuals and organizations to make informed, sustainable choices.
             Our mission is to shine a light on the environmental impact of air

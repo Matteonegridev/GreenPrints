@@ -44,11 +44,14 @@ function Result({ totalFootprint, isCalculated }: ResultProps) {
       className="text-center py-6"
     >
       <div className="">
-        <h3 className="text-2xl font-bold uppercase font-headings">
+        <h3 className="text-2xl font-bold uppercase font-headings 2xl:text-4xl">
           selected flight result:
         </h3>
       </div>
-      <p ref={scrollRef} className="font-subheading font-medium text-2xl pt-3">
+      <p
+        ref={scrollRef}
+        className="font-subheading font-medium text-2xl pt-3 2xl:text-3xl"
+      >
         Estimated Footprint:{" "}
         <span className="dark:text-tertiary text-secondary font-bold">
           {totalFootprint} tonnes

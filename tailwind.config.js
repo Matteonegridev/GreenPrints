@@ -9,7 +9,9 @@ export default {
       },
       screens: {
         sm: { max: "767px" },
+        lg: { min: "544px", max: "768px" },
         xl: { min: "1012px" },
+        "2xl": { min: "1403px" },
       },
       colors: {
         dark: "#272727",
@@ -43,7 +45,14 @@ export default {
           },
         ],
         faq: [
-          "1.35rem",
+          "1.25rem",
+          {
+            lineHeight: "1.5rem",
+            letterSpacing: "0.05em",
+          },
+        ],
+        faq2x: [
+          "1.563rem",
           {
             lineHeight: "1.5rem",
             letterSpacing: "0.05em",
@@ -77,13 +86,22 @@ export default {
             letterSpacing: "0.05em",
           },
         ],
-        "6xl": ["3.815rem"],
+        "6xl": [
+          "3.815rem",
+          {
+            lineHeight: "4rem",
+            letterSpacing: "0.03em",
+          },
+        ],
       },
       fontFamily: {
         headings: "Noto Sans",
         subheading: "PT Sans Narrow",
         title: "Gasoek One",
         body: "Rubik",
+      },
+      width: {
+        footerWidth: "calc(100% + 1.3px)",
       },
     },
   },
