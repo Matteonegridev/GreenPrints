@@ -1,0 +1,10 @@
+{
+  "formTitle": "Calculate your flight emissions:",
+  "from": "From:",
+  "to": "To:",
+  "passengers": "Number of passengers:",
+  "placeholderOrigin": "Enter departure country/airport/code",
+  "placeholderDestination": "Enter arrival country/airport/code",
+  "buttonCalculate": "Calculate",
+  "buttonReset": "Reset"
+}

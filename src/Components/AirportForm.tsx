@@ -7,6 +7,7 @@ import { useDebounce } from "use-debounce";
 import SelectPassenger from "./SelectPassenger";
 import { handleCode, resetInputs } from "../Utils/Functions";
 import Result from "./Result";
+import { useTranslation } from "react-i18next";
 
 function AirportForm() {
   const [origin, setOrigin] = useState("");
@@ -39,6 +40,7 @@ function AirportForm() {
   } = useClimateData(origin, destination, passengers);
 
   const totalFootprint = (climateData?.footprint / 1000) * passengers;
+  const { t } = useTranslation("form");
 
   // useEffect per il debounce cosi che il dato è richiamato quando si smette di scrivere:
   useEffect(() => {
@@ -118,15 +120,15 @@ function AirportForm() {
   return (
     <>
       <main className="w-full p-4">
-        <div className="p-2 pt-4 md:w-full">
+        <div className="p-2 sm:pt-28 md:w-full lg:pt-4">
           <h1 className="font-subHeadings text-center text-3xl font-bold uppercase md:w-full md:pt-10 md:text-4xl dark:text-white">
-            Calculate your flight emissions:
+            {t("formTitle")}
           </h1>
         </div>
         <section className="m-auto mt-12 flex min-h-[50dvh] flex-col gap-5 bg-white p-4 shadow-md md:w-[80%] md:gap-8 xl:p-7 dark:bg-clearDark dark:text-white">
           <AirportInput
-            placeholder="Enter departure country/airport/code"
-            text="From:"
+            placeholder={t("placeholderOrigin")}
+            text={t("from")}
             value={originSearch}
             airportData={suggestions.origin}
             setSearch={setOriginSearch}
@@ -136,8 +138,8 @@ function AirportForm() {
             onClick={(e) => handleClickFromList(e, setOriginSearch, "origin")}
           />
           <AirportInput
-            placeholder="Enter arrival country/airport/code"
-            text="To:"
+            placeholder={t("placeholderDestination")}
+            text={t("to")}
             value={destinationSearch}
             airportData={suggestions.destination}
             setSearch={setDestinationSearch}
@@ -149,7 +151,7 @@ function AirportForm() {
             }
           />
           <SelectPassenger
-            text="Number of passengers:"
+            text={t("passengers")}
             passengers={passengers}
             setPassengers={setPassengers}
           />
@@ -170,7 +172,7 @@ function AirportForm() {
                 )
               }
             >
-              Calculate
+              {t("buttonCalculate")}
             </button>
             <button
               className="w-full rounded-sm bg-tertiary px-8 py-2 text-base font-medium text-white xl:py-4 xl:text-2xl"
@@ -185,7 +187,7 @@ function AirportForm() {
                 )
               }
             >
-              Reset
+              {t("buttonReset")}
             </button>
           </div>
           {isCalculated && (

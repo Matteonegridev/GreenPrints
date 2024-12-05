@@ -1097,6 +1097,14 @@ video {
   padding-top: 2rem;
 }
 
+.pt-44{
+  padding-top: 11rem;
+}
+
+.pt-28{
+  padding-top: 7rem;
+}
+
 .text-center{
   text-align: center;
 }
@@ -1376,6 +1384,10 @@ video {
     padding-top: 1.5rem;
   }
 
+  .sm\:pt-28{
+    padding-top: 7rem;
+  }
+
   .sm\:text-5xl{
     font-size: 3.052rem;
     line-height: 3.2rem;
@@ -1541,6 +1553,10 @@ video {
 @media (min-width: 544px) and (max-width: 768px){
   .lg\:w-\[40ch\]{
     width: 40ch;
+  }
+
+  .lg\:pt-4{
+    padding-top: 1rem;
   }
 
   .lg\:text-8xl{

@@ -2,6 +2,7 @@ import MainPageImage from "../../Utils/MainPageImage";
 import Logo from "../../Utils/Logo";
 import ButtonMain from "../../Utils/ButtonMain";
 import { motion } from "framer-motion";
+import { Trans, useTranslation } from "react-i18next";
 
 const variantsDiv = {
   entry: {
@@ -27,6 +28,8 @@ const variantsSubH = {
 };
 
 function MainPage() {
+  const { t } = useTranslation("main");
+
   return (
     <main className="px-4 py-6 pt-8 dark:text-white">
       <motion.div
@@ -51,7 +54,7 @@ function MainPage() {
         className="text-center"
       >
         <h3 className="font-subheading text-2xl font-medium text-gray-500 xl:text-3xl 2xl:text-2xl">
-          A step towards a better future
+          {t("entranceMessage")}
         </h3>
       </motion.div>
 
@@ -59,16 +62,20 @@ function MainPage() {
         <MainPageImage />
         <div className="xl:order-1 xl:place-content-center 2xl:pl-20">
           <h1 className="mb-1 pl-2 pr-2 font-headings text-2xl font-extrabold uppercase md:text-4xl xl:text-5xl 2xl:text-6xl">
-            How heavy is your <span className="text-primary">footprint</span>?
+            <Trans
+              i18nKey="mainTitle"
+              components={{
+                span: <span className="text-primary" />,
+              }}
+            />
           </h1>
           <p className="text-pretty pl-2 pr-2 font-body text-base md:pt-4 md:text-xl 2xl:text-base">
-            Flying has a <strong>huge</strong> impact on our planet, producing
-            more emissions in a few hours than other activities do in days.
-            <br /> <br /> With our flight <strong>footprint</strong> calculator,
-            you’ll get a clear view of the carbon cost of each trip, helping you
-            make informed decisions for a greener future. Discover the real cost
-            of your air travel—and take action to help{" "}
-            <strong className="text-primary">protect</strong> our planet.
+            <Trans
+              i18nKey="mainParagraph"
+              components={{
+                b: <strong className="text-primary" />,
+              }}
+            />
           </p>
           <ButtonMain navigate="calculator" />
         </div>
