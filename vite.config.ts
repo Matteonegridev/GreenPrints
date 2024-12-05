@@ -5,6 +5,7 @@ import react from "@vitejs/plugin-react";
 export default defineConfig({
   plugins: [react()],
   server: {
+    // (https://www.youtube.com/watch?v=N4yUiQiTvwU)
     proxy: {
       "/api": {
         target: "http://localhost:5000",

@@ -634,6 +634,10 @@ video {
   margin-bottom: 0.25rem;
 }
 
+.mb-2{
+  margin-bottom: 0.5rem;
+}
+
 .mb-6{
   margin-bottom: 1.5rem;
 }
@@ -648,10 +652,6 @@ video {
 
 .mt-12{
   margin-top: 3rem;
-}
-
-.mb-2{
-  margin-bottom: 0.5rem;
 }
 
 .block{
@@ -718,6 +718,10 @@ video {
   width: 10ch;
 }
 
+.w-\[12rem\]{
+  width: 12rem;
+}
+
 .w-\[25ch\]{
   width: 25ch;
 }
@@ -728,14 +732,6 @@ video {
 
 .w-full{
   width: 100%;
-}
-
-.w-\[15rem\]{
-  width: 15rem;
-}
-
-.w-\[12rem\]{
-  width: 12rem;
 }
 
 .max-w-\[100\%\]{
@@ -1038,11 +1034,6 @@ video {
 .py-7{
   padding-top: 1.75rem;
   padding-bottom: 1.75rem;
-}
-
-.py-\[0\.3em\]{
-  padding-top: 0.3em;
-  padding-bottom: 0.3em;
 }
 
 .py-\[0\.4em\]{
@@ -1738,11 +1729,6 @@ video {
     letter-spacing: 0.05em;
   }
 
-  .xl\:text-8xl{
-    font-size: 6rem;
-    line-height: 1;
-  }
-
   .xl\:leading-none{
     line-height: 1;
   }
@@ -1791,10 +1777,6 @@ video {
 
   .\32xl\:w-2\/4{
     width: 50%;
-  }
-
-  .\32xl\:w-\[15rem\]{
-    width: 15rem;
   }
 
   .\32xl\:w-\[30px\]{
@@ -2018,6 +2000,11 @@ video {
   fill: #272727;
 }
 
+.dark\:text-gray-400:where(.dark, .dark *){
+  --tw-text-opacity: 1;
+  color: rgb(156 163 175 / var(--tw-text-opacity));
+}
+
 .dark\:text-tertiary:where(.dark, .dark *){
   --tw-text-opacity: 1;
   color: rgb(240 101 67 / var(--tw-text-opacity));
@@ -2026,36 +2013,6 @@ video {
 .dark\:text-white:where(.dark, .dark *){
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
-}
-
-.dark\:text-secondary:where(.dark, .dark *){
-  --tw-text-opacity: 1;
-  color: rgb(79 152 202 / var(--tw-text-opacity));
-}
-
-.dark\:text-gray-50:where(.dark, .dark *){
-  --tw-text-opacity: 1;
-  color: rgb(249 250 251 / var(--tw-text-opacity));
-}
-
-.dark\:text-gray-100:where(.dark, .dark *){
-  --tw-text-opacity: 1;
-  color: rgb(243 244 246 / var(--tw-text-opacity));
-}
-
-.dark\:text-gray-200:where(.dark, .dark *){
-  --tw-text-opacity: 1;
-  color: rgb(229 231 235 / var(--tw-text-opacity));
-}
-
-.dark\:text-gray-500:where(.dark, .dark *){
-  --tw-text-opacity: 1;
-  color: rgb(107 114 128 / var(--tw-text-opacity));
-}
-
-.dark\:text-gray-400:where(.dark, .dark *){
-  --tw-text-opacity: 1;
-  color: rgb(156 163 175 / var(--tw-text-opacity));
 }
 
 .dark\:placeholder\:text-zinc-400:where(.dark, .dark *)::-moz-placeholder{
