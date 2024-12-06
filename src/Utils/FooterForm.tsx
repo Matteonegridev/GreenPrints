@@ -1,6 +1,6 @@
 import axios from "axios";
 import { motion } from "framer-motion";
-import { useCallback, useRef, useState } from "react";
+import { useCallback, useState } from "react";
 import { useTranslation } from "react-i18next";
 import uuid4 from "uuid4";
 
@@ -37,9 +37,9 @@ const variantsInvalid = {
 function FooterForm() {
   const [isEmailValid, setIsEmailValid] = useState<boolean>(false);
   const [message, setMessage] = useState<string | null>("");
-  const emailInput = useRef<HTMLInputElement | null>(null);
   const { t } = useTranslation("footer");
 
+  // prende i dati del form trasformandoli in un aggetto inviando la chiamata al server
   const formAction = async (formData: FormData) => {
     const formDataObj = Object.fromEntries(formData.entries());
     const id = uuid4();
@@ -65,42 +65,42 @@ function FooterForm() {
   };
 
   // Email Validation:
-  const validateEmail = (email: string) => {
+  const validateEmail = (email: FormDataEntryValue | null) => {
+    if (email === null) return false;
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return regex.test(email);
+    return regex.test(String(email));
   };
 
-  const handleSubmit = useCallback((e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const form = e.currentTarget;
-    const formData = new FormData(form);
-    const email = emailInput.current?.value || "";
+  const handleSubmit = useCallback(
+    (e: React.FormEvent<HTMLFormElement>) => {
+      e.preventDefault();
+      const form = e.currentTarget;
+      const formData = new FormData(form);
+      const email = formData.get("email");
 
-    // Se mail non valida:
-    if (!validateEmail(email)) {
-      setMessage(t("invalid"));
-      setIsEmailValid(false);
+      // Se mail validation fallisce:
+      if (!validateEmail(email)) {
+        setMessage(t("invalid"));
+        setIsEmailValid(false);
 
-      // Fa scomparire il messaggio di errore dopo 3 secondi:
+        // Fa scomparire il messaggio di errore dopo 3 secondi:
+        setTimeout(() => {
+          setMessage(null);
+        }, 3000);
+        return;
+      }
+      // Se email valida crea il formData, fa scattare il messaggio di ringraziamento, messaggio di errore tolto, resetta il form:
+      setIsEmailValid(true);
+      setMessage(null);
+      formAction(formData);
+      form.reset();
+
       setTimeout(() => {
-        setMessage(null);
+        setIsEmailValid(false);
       }, 3000);
-      return;
-    }
-    // Se email valida crea il formData, fa scattare il messaggio di ringraziamento, messaggio di errore tolto:
-    setIsEmailValid(true);
-    setMessage(null);
-    formAction(formData);
-
-    // Svuota input:
-    if (emailInput.current) {
-      emailInput.current.value = "";
-    }
-
-    setTimeout(() => {
-      setIsEmailValid(false);
-    }, 3000);
-  }, []);
+    },
+    [t],
+  );
 
   return (
     <div className="pt-5 xl:pt-10 2xl:m-auto 2xl:w-2/4">
@@ -115,7 +115,6 @@ function FooterForm() {
           {t("sub")}
         </label>
         <input
-          ref={(el) => (emailInput.current = el)}
           className="rounded-sm border-none px-4 py-2 font-body text-base text-clearDark caret-tertiary outline-none transition-all duration-300 ease-in-out focus-within:shadow-lg 2xl:w-2/4 2xl:py-3"
           type="email"
           name="email"
