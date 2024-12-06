@@ -70,40 +70,37 @@ function FooterForm() {
     return regex.test(email);
   };
 
-  const handleSubmit = useCallback(
-    (e: React.FormEvent<HTMLFormElement>) => {
-      e.preventDefault();
-      const form = e.currentTarget;
-      const formData = new FormData(form);
-      const email = emailInput.current?.value || "";
+  const handleSubmit = useCallback((e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+    const email = emailInput.current?.value || "";
 
-      // Se mail non valida:
-      if (!validateEmail(email)) {
-        setMessage(t("invalid"));
-        setIsEmailValid(false);
+    // Se mail non valida:
+    if (!validateEmail(email)) {
+      setMessage(t("invalid"));
+      setIsEmailValid(false);
 
-        // Fa scomparire il messaggio di errore dopo 3 secondi:
-        setTimeout(() => {
-          setMessage(null);
-        }, 3000);
-        return;
-      }
-      // Se email valida crea il formData, fa scattare il messaggio di ringraziamento, messaggio di errore tolto:
-      setIsEmailValid(true);
-      setMessage(null);
-      formAction(formData);
-
-      // Svuota input:
-      if (emailInput.current) {
-        emailInput.current.value = "";
-      }
-
+      // Fa scomparire il messaggio di errore dopo 3 secondi:
       setTimeout(() => {
-        setIsEmailValid(false);
+        setMessage(null);
       }, 3000);
-    },
-    [t],
-  );
+      return;
+    }
+    // Se email valida crea il formData, fa scattare il messaggio di ringraziamento, messaggio di errore tolto:
+    setIsEmailValid(true);
+    setMessage(null);
+    formAction(formData);
+
+    // Svuota input:
+    if (emailInput.current) {
+      emailInput.current.value = "";
+    }
+
+    setTimeout(() => {
+      setIsEmailValid(false);
+    }, 3000);
+  }, []);
 
   return (
     <div className="pt-5 xl:pt-10 2xl:m-auto 2xl:w-2/4">

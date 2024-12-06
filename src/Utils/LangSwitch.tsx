@@ -16,7 +16,8 @@ function LangSwitch() {
 
   return (
     <button
-      className="fixed bottom-10 right-3 flex h-16 w-16 items-center justify-center rounded-full bg-clearDark px-4 py-6 shadow-lg dark:bg-gray-50"
+      style={{ right: "16px" }}
+      className="fixed bottom-10 flex h-16 w-16 items-center justify-center rounded-full bg-clearDark px-4 py-6 shadow-lg dark:bg-gray-50"
       onClick={changeLanguage}
     >
       <FlagIcon code={changeFlag()} size={32} />
