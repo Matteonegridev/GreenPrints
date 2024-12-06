@@ -1,6 +1,7 @@
 import { Outlet } from "react-router-dom";
 import Navbar from "../Navbar";
 import Footer from "../Footer";
+import LangSwitch from "../../Utils/LangSwitch";
 
 function RootLayout() {
   return (
@@ -8,6 +9,7 @@ function RootLayout() {
       <Navbar />
       <Outlet />
       <Footer />
+      <LangSwitch />
     </>
   );
 }
