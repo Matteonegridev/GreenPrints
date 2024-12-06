@@ -32,6 +32,8 @@ function Result({ totalFootprint, isCalculated }: ResultProps) {
     if (isCalculated && scrollRef.current) {
       scrollRef.current?.scrollIntoView({
         behavior: "smooth",
+        // senza il block scrolla tutto verso l'elemento
+        block: "center",
       });
     }
   }, [isCalculated]);
@@ -41,19 +43,17 @@ function Result({ totalFootprint, isCalculated }: ResultProps) {
       variants={variantsDiv}
       animate={isCalculated ? "open" : "closed"}
       initial="closed"
-      className="text-center py-6"
+      className="py-6 text-center"
     >
-      <div className="">
-        <h3 className="text-2xl font-bold uppercase font-headings 2xl:text-4xl">
-          selected flight result:
-        </h3>
-      </div>
+      <h3 className="font-headings text-2xl font-bold uppercase 2xl:text-4xl">
+        selected flight result:
+      </h3>
       <p
         ref={scrollRef}
-        className="font-subheading font-medium text-2xl pt-3 2xl:text-3xl"
+        className="pt-3 font-subheading text-2xl font-medium 2xl:text-3xl"
       >
         Estimated Footprint:{" "}
-        <span className="dark:text-tertiary text-secondary font-bold">
+        <span className="font-bold text-secondary dark:text-tertiary">
           {totalFootprint} tonnes
         </span>{" "}
         CO2e
