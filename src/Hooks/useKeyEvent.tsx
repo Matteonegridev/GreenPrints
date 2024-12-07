@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Airport } from "../Hooks/useAirportData"; // Assuming Airport type is imported
+import { Airport } from "../Hooks/useAirportData";
 
 // Custom hook for handling key events
 const useKeyEvent = (
@@ -9,7 +9,7 @@ const useKeyEvent = (
     React.SetStateAction<{ origin: Airport[]; destination: Airport[] }>
   >,
   type: "origin" | "destination",
-  value: string
+  value: string,
 ) => {
   const [selectedItem, setSelectedItem] = useState<number>(-1);
   const [isListActive, setIsListActive] = useState<boolean>(false);
@@ -27,7 +27,7 @@ const useKeyEvent = (
       case "ArrowUp":
         if (selectedItem > 0) {
           setSelectedItem(
-            (prev) => (prev - 1 + totalSuggestions) % totalSuggestions
+            (prev) => (prev - 1 + totalSuggestions) % totalSuggestions,
           );
         }
         break;

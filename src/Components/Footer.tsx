@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import FooterForm from "../Utils/FooterForm";
 import Logo from "../Utils/Logo";
 import Wave from "../Utils/Wave";
+import FormFooter from "../Utils/FormFooter";
 
 function Footer() {
   const measures = window.innerWidth > 1405;
@@ -28,7 +28,8 @@ function Footer() {
           GREENPRINTS
         </span>
       </div>
-      <FooterForm />
+      {/* <FooterForm /> */}
+      <FormFooter />
       <div className="py-5 text-center text-gray-600 xl:mt-24 xl:py-1 2xl:py-5">
         <span className="font-subheading text-sm 2xl:text-base">
           © 2024 Copyrights: GreenPrints{" "}

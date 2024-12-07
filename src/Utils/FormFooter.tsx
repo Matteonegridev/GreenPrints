@@ -1,8 +1,11 @@
 import axios from "axios";
 import { motion } from "framer-motion";
-import { useCallback, useState } from "react";
+import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import uuid4 from "uuid4";
+import { z, ZodType } from "zod";
+import { FieldErrors, useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
 
 const variantsMessage = {
   open: {
@@ -22,8 +25,11 @@ const variantsMessage = {
     },
   },
 };
+
 const variantsInvalid = {
-  hidden: {},
+  hidden: {
+    opacity: 0,
+  },
   visible: {
     opacity: [0, 1, 0],
     transition: {
@@ -34,22 +40,29 @@ const variantsInvalid = {
   },
 };
 
+type FormData = {
+  email: string;
+};
+
 function FooterForm() {
-  const [isEmailValid, setIsEmailValid] = useState<boolean>(false);
   const [message, setMessage] = useState<string | null>("");
+  const [isEmailValid, setIsEmailValid] = useState<boolean>(false);
+
   const { t } = useTranslation("footer");
 
-  // prende i dati del form trasformandoli in un aggetto inviando la chiamata al server
-  const formAction = async (formData: FormData) => {
-    const formDataObj = Object.fromEntries(formData.entries());
+  const formSchema: ZodType<FormData> = z.object({
+    email: z
+      .string()
+      .regex(/^[^\s@]+@[^\s@]+\.[^\s@]+$/, "Invalid email format"),
+  });
+
+  const submitData = async (formData: FormData) => {
     const id = uuid4();
 
     const payload = {
       id,
-      email: formDataObj.email,
+      formData,
     };
-
-    console.log("Form Data Submitted:", payload);
 
     try {
       const response = await axios.post("/api", payload, {
@@ -57,56 +70,47 @@ function FooterForm() {
           "Content-Type": "application/json",
         },
       });
+      console.log("Response data:", response.data);
 
       return response.data;
     } catch (error) {
-      console.error("Error", error);
+      console.log("Error:", error);
     }
   };
 
-  // Email Validation:
-  const validateEmail = (email: FormDataEntryValue | null) => {
-    if (email === null) return false;
-    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return regex.test(String(email));
+  const handleValidSubmit = async (data: FormData) => {
+    console.log("onSubmit called");
+    await submitData(data);
+    setIsEmailValid(true);
+    setTimeout(() => {
+      setIsEmailValid(false);
+    }, 3000);
+    reset();
   };
 
-  const handleSubmit = useCallback(
-    (e: React.FormEvent<HTMLFormElement>) => {
-      e.preventDefault();
-      const form = e.currentTarget;
-      const formData = new FormData(form);
-      const email = formData.get("email");
-
-      // Se mail validation fallisce:
-      if (!validateEmail(email)) {
-        setMessage(t("invalid"));
-        setIsEmailValid(false);
-
-        // Fa scomparire il messaggio di errore dopo 3 secondi:
-        setTimeout(() => {
-          setMessage(null);
-        }, 3000);
-        return;
-      }
-      // Se email valida crea il formData, fa scattare il messaggio di ringraziamento, messaggio di errore tolto, resetta il form:
-      setIsEmailValid(true);
+  const handleInvalidSubmit = (errors: FieldErrors<FormData>) => {
+    console.log("Validation failed:", errors);
+    setMessage(t("invalid"));
+    setIsEmailValid(false);
+    setTimeout(() => {
       setMessage(null);
-      formAction(formData);
-      form.reset();
+    }, 3000);
+  };
 
-      setTimeout(() => {
-        setIsEmailValid(false);
-      }, 3000);
-    },
-    [t],
-  );
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm<FormData>({
+    resolver: zodResolver(formSchema),
+  });
 
   return (
     <div className="pt-5 xl:pt-10 2xl:m-auto 2xl:w-2/4">
       <form
+        onSubmit={handleSubmit(handleValidSubmit, handleInvalidSubmit)}
         className="flex flex-col items-center justify-center gap-5"
-        onSubmit={(e) => handleSubmit(e)}
       >
         <label
           className="-mb-2 font-body text-base font-bold text-gray-500 2xl:mb-0 2xl:text-2xl"
@@ -117,18 +121,17 @@ function FooterForm() {
         <input
           className="rounded-sm border-none px-4 py-2 font-body text-base text-clearDark caret-tertiary outline-none transition-all duration-300 ease-in-out focus-within:shadow-lg 2xl:w-2/4 2xl:py-3"
           type="email"
-          name="email"
           id="email"
           placeholder="email@example.com"
           required
           autoComplete="off"
+          {...register("email")}
         />
-        {!isEmailValid && (
+        {errors.email && message && (
           <motion.p
             variants={variantsInvalid}
             initial="hidden"
             animate={message ? "visible" : "hidden"}
-            exit="hidden"
             className="font-body text-sm text-tertiary xl:text-base"
           >
             {message}
