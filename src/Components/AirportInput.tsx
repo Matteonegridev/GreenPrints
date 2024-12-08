@@ -52,7 +52,7 @@ function AirportInput({
         placeholder={placeholder}
         value={value}
         onChange={onChange}
-        className="rounded-md border border-secondary px-1 py-2 outline-none placeholder:pl-2 placeholder:text-placeholder placeholder:text-inherit placeholder:text-slate-300 focus:border-2 xl:py-4 xl:pl-2 xl:text-2xl xl:placeholder:text-xl dark:border-primary dark:bg-clearDark dark:placeholder:text-zinc-400 dark:focus:border-2"
+        className="rounded-md border border-secondary px-1 py-2 shadow-sm shadow-primary outline-none placeholder:pl-2 placeholder:text-placeholder placeholder:text-inherit placeholder:text-slate-300 focus:border-2 xl:py-4 xl:pl-2 xl:text-2xl xl:placeholder:text-xl dark:border-primary dark:bg-clearDark dark:placeholder:text-zinc-400 dark:focus:border-2"
         onKeyDown={handleKeyEvent}
       />
       {isListActive && (

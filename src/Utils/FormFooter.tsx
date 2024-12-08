@@ -45,23 +45,30 @@ type FormData = {
 };
 
 function FooterForm() {
-  const [message, setMessage] = useState<string | null>("");
-  const [isEmailValid, setIsEmailValid] = useState<boolean>(false);
+  const [validationState, setValidationState] = useState<
+    "valid" | "invalid" | null
+  >(null);
 
   const { t } = useTranslation("footer");
 
   const formSchema: ZodType<FormData> = z.object({
     email: z
       .string()
-      .regex(/^[^\s@]+@[^\s@]+\.[^\s@]+$/, "Invalid email format"),
+      .email()
+      .regex(
+        /^([A-Z0-9_+-]+\.?)*[A-Z0-9_+-]@([A-Z0-9][A-Z0-9-]*\.)+[A-Z]{2,}$/i,
+        "Invalid email format",
+      ),
   });
+
+  type FormValues = z.infer<typeof formSchema>;
 
   const submitData = async (formData: FormData) => {
     const id = uuid4();
 
     const payload = {
       id,
-      formData,
+      email: formData,
     };
 
     try {
@@ -78,22 +85,23 @@ function FooterForm() {
     }
   };
 
-  const handleValidSubmit = async (data: FormData) => {
+  const handleValidSubmit = async (data: FormValues) => {
     console.log("onSubmit called");
-    await submitData(data);
-    setIsEmailValid(true);
-    setTimeout(() => {
-      setIsEmailValid(false);
-    }, 3000);
-    reset();
+    const result = await submitData(data);
+    if (result) {
+      setValidationState("valid");
+      reset();
+      setTimeout(() => {
+        setValidationState("invalid");
+      }, 3000);
+    }
   };
 
-  const handleInvalidSubmit = (errors: FieldErrors<FormData>) => {
+  const handleInvalidSubmit = (errors: FieldErrors<FormValues>) => {
     console.log("Validation failed:", errors);
-    setMessage(t("invalid"));
-    setIsEmailValid(false);
+    setValidationState("invalid");
     setTimeout(() => {
-      setMessage(null);
+      setValidationState(null);
     }, 3000);
   };
 
@@ -102,7 +110,7 @@ function FooterForm() {
     handleSubmit,
     reset,
     formState: { errors },
-  } = useForm<FormData>({
+  } = useForm<FormValues>({
     resolver: zodResolver(formSchema),
   });
 
@@ -127,14 +135,14 @@ function FooterForm() {
           autoComplete="off"
           {...register("email")}
         />
-        {errors.email && message && (
+        {errors.email && validationState === "invalid" && (
           <motion.p
             variants={variantsInvalid}
             initial="hidden"
-            animate={message ? "visible" : "hidden"}
+            animate={validationState ? "visible" : "hidden"}
             className="font-body text-sm text-tertiary xl:text-base"
           >
-            {message}
+            {t("invalid")}
           </motion.p>
         )}
         <button
@@ -146,7 +154,7 @@ function FooterForm() {
         <motion.div
           initial="close"
           variants={variantsMessage}
-          animate={isEmailValid ? "open" : "close"}
+          animate={validationState === "valid" ? "open" : "close"}
         >
           <p className="font-subheading text-xl text-white 2xl:text-3xl">
             {t("thanks")}
