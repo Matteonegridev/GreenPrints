@@ -2,9 +2,7 @@
 
 ## The Project
 
-This application is one of the projects for the Master in Full Stack Development for [start2impact](https://www.start2impact.it/) UNIVERSITY.
-
-Link application : <a href="#" target="_blank">AIRECO APP</a>
+Link application : [GreenPrints](https://greenprints.netlify.app/)
 
 ### My skills for this project
 
