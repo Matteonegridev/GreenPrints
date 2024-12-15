@@ -42,11 +42,11 @@ function FaqQuestion({ question, answer }: Props) {
         </h1>
         <div
           onClick={() => setIsOpen(!isOpen)}
-          className="p-6 xl:cursor-pointer"
+          className="relative flex h-[52px] w-[52px] items-center justify-center p-4 xl:cursor-pointer"
         >
           <motion.span
             style={{
-              top: "65%",
+              top: "50%",
               right: "0%",
               x: "-25%",
               y: "-25%",
@@ -72,7 +72,7 @@ function FaqQuestion({ question, answer }: Props) {
           ></motion.span>
           <motion.span
             style={{
-              top: "65%",
+              top: "50%",
               right: "0%",
               x: "-25%",
               y: "-25%",
