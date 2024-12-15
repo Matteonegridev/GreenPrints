@@ -105,5 +105,15 @@ export default {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    function ({ addBase }) {
+      addBase({
+        html: {
+          "-webkit-font-smoothing": "antialiased",
+          "-moz-osx-font-smoothing": "grayscale",
+          "text-rendering": "optimizeLegibility",
+        },
+      });
+    },
+  ],
 };
