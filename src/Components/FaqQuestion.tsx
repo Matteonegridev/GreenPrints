@@ -30,9 +30,9 @@ function FaqQuestion({ question, answer }: Props) {
 
   return (
     <div className="border-b border-black dark:border-b dark:border-white">
-      <div className="flex justify-between items-center pt-6 relative ">
+      <div className="relative flex items-center justify-between pt-6">
         <h1
-          className={` w-[25ch] lg:w-[40ch] md:w-[55ch] font-headings font-bold text-faq pb-2 xl:text-faq2x ${
+          className={`w-[25ch] pb-2 font-headings text-faq font-bold md:w-[55ch] lg:w-[40ch] xl:text-faq2x ${
             isOpen
               ? "text-tertiary transition-all duration-200 ease-linear"
               : "transition-all duration-200 ease-linear"
@@ -42,7 +42,7 @@ function FaqQuestion({ question, answer }: Props) {
         </h1>
         <div
           onClick={() => setIsOpen(!isOpen)}
-          className="xl:p-4 xl:cursor-pointer "
+          className="p-6 xl:cursor-pointer"
         >
           <motion.span
             style={{
@@ -68,7 +68,7 @@ function FaqQuestion({ question, answer }: Props) {
               },
             }}
             animate={isOpen ? "open" : "closed"}
-            className="absolute w-6 h-[1px] dark:bg-white bg-black "
+            className="absolute h-[1px] w-6 bg-black dark:bg-white"
           ></motion.span>
           <motion.span
             style={{
@@ -95,7 +95,7 @@ function FaqQuestion({ question, answer }: Props) {
             }}
             initial={false}
             animate={isOpen ? "open" : "closed"}
-            className="absolute rotate-90  w-6 h-[1px]  dark:bg-white bg-black "
+            className="absolute h-[1px] w-6 rotate-90 bg-black dark:bg-white"
           ></motion.span>
         </div>
       </div>
@@ -103,9 +103,9 @@ function FaqQuestion({ question, answer }: Props) {
         variants={variantsDiv}
         initial="closed"
         animate={isOpen ? "open" : "closed"}
-        className="py-2 overflow-hidden"
+        className="overflow-hidden py-2"
       >
-        <p className="text-body text-base xl:text-xl xl:pr-6 2xl:pr-10 2xl:text-base">
+        <p className="text-body text-base xl:pr-6 xl:text-xl 2xl:pr-10 2xl:text-base">
           {answer}
         </p>
       </motion.div>
