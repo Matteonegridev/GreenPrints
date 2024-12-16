@@ -53,7 +53,7 @@ function MainPage() {
         animate="entry"
         className="text-center"
       >
-        <h3 className="font-subheading text-2xl font-medium text-gray-500 xl:text-3xl 2xl:text-2xl">
+        <h3 className="font-subHeadings text-2xl font-medium text-gray-500 xl:text-3xl 2xl:text-2xl">
           {t("entranceMessage")}
         </h3>
       </motion.div>

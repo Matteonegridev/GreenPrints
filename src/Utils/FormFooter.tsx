@@ -156,7 +156,7 @@ function FooterForm() {
           variants={variantsMessage}
           animate={validationState === "valid" ? "open" : "close"}
         >
-          <p className="font-subheading text-xl text-white 2xl:text-3xl">
+          <p className="font-subHeadings text-xl text-white 2xl:text-3xl">
             {t("thanks")}
           </p>
         </motion.div>

@@ -50,7 +50,7 @@ function Result({ totalFootprint, isCalculated }: ResultProps) {
       </h3>
       <p
         ref={scrollRef}
-        className="pt-3 font-subheading text-2xl font-medium 2xl:text-3xl"
+        className="font-subHeadings pt-3 text-2xl font-medium 2xl:text-3xl"
       >
         Estimated Footprint:{" "}
         <span className="font-bold text-secondary dark:text-tertiary">

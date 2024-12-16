@@ -59,7 +59,7 @@ function NavbarDesktop({ menuItems }: MenuItemProps) {
                   whileHover="open"
                   animate="closed"
                   key={i}
-                  className="2xl:hover:ease relative font-subheading text-2xl md:text-4xl md:font-normal md:text-white 2xl:text-3xl 2xl:hover:text-clearDark 2xl:hover:transition-all 2xl:hover:duration-200"
+                  className="2xl:hover:ease font-subHeadings relative text-2xl md:text-4xl md:font-normal md:text-white 2xl:text-3xl 2xl:hover:text-clearDark 2xl:hover:transition-all 2xl:hover:duration-200"
                 >
                   <motion.span
                     style={{

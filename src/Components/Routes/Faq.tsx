@@ -66,7 +66,7 @@ function Faq() {
       <div className="flex justify-start gap-3 pl-3 pt-8 [&>*]:text-secondary [&>*]:dark:text-tertiary">
         <Link to={"/calculator"}>
           <i className="fa-solid fa-chevron-left text-xl xl:text-3xl"></i>
-          <span className="ml-3 font-subheading text-2xl font-semibold uppercase xl:text-3xl">
+          <span className="font-subHeadings ml-3 text-2xl font-semibold uppercase xl:text-3xl">
             {t("calcButtonFaq")}
           </span>
         </Link>

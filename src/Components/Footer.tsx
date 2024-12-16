@@ -31,7 +31,7 @@ function Footer() {
       {/* <FooterForm /> */}
       <FormFooter />
       <div className="py-5 text-center text-gray-600 xl:mt-24 xl:py-1 2xl:py-5">
-        <span className="font-subheading text-sm 2xl:text-base">
+        <span className="font-subHeadings text-sm 2xl:text-base">
           © 2024 Copyrights: GreenPrints{" "}
         </span>
       </div>

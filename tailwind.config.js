@@ -96,7 +96,7 @@ export default {
       },
       fontFamily: {
         headings: ["Noto Sans", "sans-serif"],
-        subheading: ["PT Sans Narrow", "sans-serif"],
+        subHeadings: ["PT Sans Narrow", "sans-serif"],
         title: ["Gasoek One", "serif"],
         body: ["Rubik", "sans-serif"],
       },
