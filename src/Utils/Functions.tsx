@@ -13,7 +13,7 @@ export const handleCode = (
   destinationSearch: string,
   originSearch: string,
   isCalculated: boolean | undefined,
-  setIsCalculated: React.Dispatch<React.SetStateAction<boolean>>
+  setIsCalculated: React.Dispatch<React.SetStateAction<boolean>>,
 ) => {
   e.preventDefault();
   const toCode = findCode(destinationSearch);
@@ -23,7 +23,7 @@ export const handleCode = (
   if (!isCalculated) {
     setTimeout(() => {
       setIsCalculated(true);
-    }, 500);
+    }, 1000);
   }
   console.log(fromCode, toCode);
 };
@@ -35,7 +35,7 @@ export const resetInputs = (
   setOriginSearch: React.Dispatch<React.SetStateAction<string>>,
   setDestinationSearch: React.Dispatch<React.SetStateAction<string>>,
   setIsCalculated: React.Dispatch<React.SetStateAction<boolean>>,
-  setPassengers: React.Dispatch<React.SetStateAction<number>>
+  setPassengers: React.Dispatch<React.SetStateAction<number>>,
 ) => {
   setSuggestions((prev) => ({ ...prev, origin: [], destination: [] }));
   setOriginSearch("");
