@@ -87,7 +87,7 @@ function Navbar() {
                 <motion.li
                   key={i}
                   variants={variantsLi}
-                  className="border-b border-white py-6 text-5xl font-semibold text-white"
+                  className="border-b border-white py-6 text-3xl font-semibold text-white"
                 >
                   <Link
                     onClick={handleClick}
