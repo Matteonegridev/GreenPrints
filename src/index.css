@@ -1,5 +1,24 @@
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=PT+Sans+Narrow:wght@400;700&family=Gasoek+One&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap");
 
+@font-face {
+  font-family: Rubik;
+  src: url("/assets/fonts/Rubik-VariableFont_wght.ttf") format("ttf");
+}
+@font-face {
+  font-family: Gasoek One;
+  src: url("/assets/fonts/GasoekOne-Regular.ttf") format("ttf");
+}
+@font-face {
+  font-family: Noto Sans;
+  src: url("/assets/fonts/NotoSans-VariableFont_wdth,wght.ttf") format("ttf");
+}
+@font-face {
+  font-family: PT Sans Narrow;
+  src:
+    url("/assets/fonts/PTSansNarrow-Regular.ttf") format("ttf"),
+    url("/assets/fonts/PTSansNarrow-Bold.ttf") format(("ttf"));
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
