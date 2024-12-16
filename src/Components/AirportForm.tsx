@@ -84,7 +84,8 @@ function AirportForm() {
       (values: Airport) =>
         values.name.toLowerCase().includes(trimmedQuery.toLowerCase()) ||
         values.country.toLowerCase().includes(trimmedQuery.toLowerCase()) ||
-        values.code.toLowerCase().includes(trimmedQuery.toLowerCase()),
+        values.code.toLowerCase().includes(trimmedQuery.toLowerCase()) ||
+        values.city?.toLowerCase().includes(trimmedQuery.toLowerCase()),
     );
     setSuggestions((prev) => ({ ...prev, [type]: filteredElements }));
   };
