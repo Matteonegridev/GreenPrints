@@ -12,6 +12,7 @@ export type Airport = {
   country: string;
   name: string;
   code: string;
+  city?: string;
 };
 
 const useAirportData = () => {
@@ -26,6 +27,7 @@ const useAirportData = () => {
         country: value.country,
         name: value.name,
         code: value.code,
+        city: value.city,
       }));
       return resultData;
     },

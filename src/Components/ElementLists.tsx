@@ -1,7 +1,12 @@
 import { useEffect, useRef, useState } from "react";
 
 type ListProps = {
-  filteredElements: { name: string; country: string; code: string }[];
+  filteredElements: {
+    name: string;
+    country: string;
+    code: string;
+    city?: string;
+  }[];
   selectedItem: number;
 };
 
