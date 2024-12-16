@@ -95,10 +95,10 @@ export default {
         ],
       },
       fontFamily: {
-        headings: ["Noto Sans", "sans"],
-        subHeadings: ["PT Sans Narrow", "sans"],
-        title: ["Gasoek One", "serif"],
-        body: ["Rubik", "sans"],
+        headingsText: ["Noto Sans"],
+        subHeadings: ["PT Sans Narrow"],
+        titleText: ["Gasoek One"],
+        textBody: ["Rubik"],
       },
       width: {
         footerWidth: "calc(100% + 1.3px)",

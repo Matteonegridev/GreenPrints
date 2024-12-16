@@ -45,7 +45,7 @@ function Result({ totalFootprint, isCalculated }: ResultProps) {
       initial="closed"
       className="py-6 text-center"
     >
-      <h3 className="font-headings text-2xl font-bold uppercase 2xl:text-4xl">
+      <h3 className="font-headingsText text-2xl font-bold uppercase 2xl:text-4xl">
         selected flight result:
       </h3>
       <p

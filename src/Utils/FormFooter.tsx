@@ -121,13 +121,13 @@ function FooterForm() {
         className="flex flex-col items-center justify-center gap-5"
       >
         <label
-          className="-mb-2 font-body text-base font-bold text-gray-500 2xl:mb-0 2xl:text-2xl"
+          className="font-textBody -mb-2 text-base font-bold text-gray-500 2xl:mb-0 2xl:text-2xl"
           htmlFor="email"
         >
           {t("sub")}
         </label>
         <input
-          className="rounded-sm border-none px-4 py-2 font-body text-base text-clearDark caret-tertiary outline-none transition-all duration-300 ease-in-out focus-within:shadow-lg 2xl:w-2/4 2xl:py-3"
+          className="font-textBody rounded-sm border-none px-4 py-2 text-base text-clearDark caret-tertiary outline-none transition-all duration-300 ease-in-out focus-within:shadow-lg 2xl:w-2/4 2xl:py-3"
           type="email"
           id="email"
           placeholder="email@example.com"
@@ -140,13 +140,13 @@ function FooterForm() {
             variants={variantsInvalid}
             initial="hidden"
             animate={validationState ? "visible" : "hidden"}
-            className="font-body text-sm text-tertiary xl:text-base"
+            className="font-textBody text-sm text-tertiary xl:text-base"
           >
             {t("invalid")}
           </motion.p>
         )}
         <button
-          className="w-[12rem] rounded-sm bg-secondary px-[0.8em] py-[0.4em] font-body font-bold text-white shadow-sm transition-all duration-200 ease-in 2xl:text-xl 2xl:hover:bg-white 2xl:hover:text-secondary 2xl:hover:shadow-lg 2xl:active:shadow-sm"
+          className="font-textBody w-[12rem] rounded-sm bg-secondary px-[0.8em] py-[0.4em] font-bold text-white shadow-sm transition-all duration-200 ease-in 2xl:text-xl 2xl:hover:bg-white 2xl:hover:text-secondary 2xl:hover:shadow-lg 2xl:active:shadow-sm"
           type="submit"
         >
           {t("signIn")}

@@ -24,7 +24,7 @@ function Footer() {
           stroke="#fff"
           fill="#fff"
         />
-        <span className="font-title text-2xl text-white xl:text-4xl 2xl:text-5xl">
+        <span className="font-titleText text-2xl text-white xl:text-4xl 2xl:text-5xl">
           GREENPRINTS
         </span>
       </div>

@@ -60,7 +60,7 @@ function Faq() {
 
   return (
     <main className="px-2 pt-32">
-      <h1 className="pt-5 text-center font-headings text-3xl font-black xl:pb-6 xl:text-4xl dark:text-white">
+      <h1 className="font-headingsText pt-5 text-center text-3xl font-black xl:pb-6 xl:text-4xl dark:text-white">
         {t("titleFaq")}
       </h1>
       <div className="flex justify-start gap-3 pl-3 pt-8 [&>*]:text-secondary [&>*]:dark:text-tertiary">

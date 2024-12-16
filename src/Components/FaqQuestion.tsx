@@ -32,7 +32,7 @@ function FaqQuestion({ question, answer }: Props) {
     <div className="border-b border-black dark:border-b dark:border-white">
       <div className="relative flex items-center justify-between pt-6">
         <h1
-          className={`w-[25ch] pb-2 font-headings text-faq font-bold md:w-[55ch] lg:w-[40ch] xl:text-faq2x ${
+          className={`font-headingsText w-[25ch] pb-2 text-faq font-bold md:w-[55ch] lg:w-[40ch] xl:text-faq2x ${
             isOpen
               ? "text-tertiary transition-all duration-200 ease-linear"
               : "transition-all duration-200 ease-linear"
@@ -105,7 +105,7 @@ function FaqQuestion({ question, answer }: Props) {
         animate={isOpen ? "open" : "closed"}
         className="overflow-hidden py-2"
       >
-        <p className="text-body text-base xl:pr-6 xl:text-xl 2xl:pr-10 2xl:text-base">
+        <p className="text-textBody text-base xl:pr-6 xl:text-xl 2xl:pr-10 2xl:text-base">
           {answer}
         </p>
       </motion.div>
