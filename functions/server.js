@@ -1,20 +1,25 @@
 import express from "express";
 import cors from "cors";
 import fs from "fs";
+import ServerlessHttp from "serverless-http";
+import path from "path";
 
 const app = express();
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: "*",
   }),
 );
 app.use(express.json());
 
-app.post("/", (req, res) => {
+app.post("/formData", (req, res) => {
   const data = req.body;
 
   //! NODE.JS fs per gestire il file json:
-  fs.readFile("formData.json", "utf8", (err, fileData) => {
+
+  const filePath = path.join(__dirname, "..", "server", "formData.json");
+
+  fs.readFile(filePath, "utf8", (err, fileData) => {
     let jsonData = [];
 
     if (!err && fileData) {
@@ -26,7 +31,7 @@ app.post("/", (req, res) => {
 
     // L'array aggiornato viene scritto nel file:
     fs.writeFile(
-      "formData.json",
+      filePath,
       JSON.stringify(jsonData, null, 2),
       "utf8",
       (writeErr) => {
@@ -44,4 +49,4 @@ app.post("/", (req, res) => {
   });
 });
 
-app.listen(5000, () => console.log("app is running"));
+export const handler = ServerlessHttp(app);
