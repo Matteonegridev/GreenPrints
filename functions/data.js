@@ -1,55 +1,37 @@
-const fs = require("fs");
-const path = require("path");
-
 exports.handler = async (event, context) => {
-  // Allow only POST requests
+  // SOLO POST REQUESTS:
   if (event.httpMethod !== "POST") {
+    console.log("Invalid method");
     return {
       statusCode: 405,
-      body: JSON.stringify({ message: "Method Not Allowed" }),
+      body: JSON.stringify({ error: "Method Not Allowed" }),
     };
   }
 
   try {
-    // Parse the incoming email from the request body
-    const { email } = JSON.parse(event.body);
-    if (!email) {
+    const body = JSON.parse(event.body);
+
+    if (!body.email) {
+      console.log("Validation Error: Email is missing");
       return {
         statusCode: 400,
-        body: JSON.stringify({ message: "Email is required" }),
+        body: JSON.stringify({ error: "Email is required" }),
       };
     }
 
-    // Path to the emails.json file
-    const filePath = path.resolve(__dirname, "../emails.json");
+    console.log("Valid Email Received:", body.email);
 
-    // Read the existing data in emails.json
-    let emails = [];
-    if (fs.existsSync(filePath)) {
-      const fileData = fs.readFileSync(filePath, "utf-8");
-      emails = JSON.parse(fileData);
-    }
-
-    // Append the new email to the array
-    emails.push({ email, timestamp: new Date().toISOString() });
-
-    // Save the updated array back to emails.json
-    fs.writeFileSync(filePath, JSON.stringify(emails, null, 2));
-
-    // Success response
+    // SIMULA IL SALVATAGGIO AD UN DATABASE:
     return {
       statusCode: 200,
-      headers: {
-        "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Headers": "Content-Type",
-      },
-      body: JSON.stringify({ message: "Email saved successfully" }),
+      body: JSON.stringify({ message: "Email saved successfully", data: body }),
     };
   } catch (error) {
-    console.error("Error saving email:", error);
+    console.error("Error processing request:", error.message);
+
     return {
       statusCode: 500,
-      body: JSON.stringify({ message: "Internal Server Error" }),
+      body: JSON.stringify({ error: "Internal Server Error" }),
     };
   }
 };

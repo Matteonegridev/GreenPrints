@@ -1,13 +1,12 @@
 import express from "express";
 import cors from "cors";
 import fs from "fs";
-import ServerlessHttp from "serverless-http";
 import path from "path";
 
 const app = express();
 app.use(
   cors({
-    origin: "*",
+    origin: "http://localhost:5173",
   }),
 );
 app.use(express.json());
@@ -17,7 +16,7 @@ app.post("/formData", (req, res) => {
 
   //! NODE.JS fs per gestire il file json:
 
-  const filePath = path.join(__dirname, "..", "server", "formData.json");
+  const filePath = path.join(__dirname, "formData.json");
 
   fs.readFile(filePath, "utf8", (err, fileData) => {
     let jsonData = [];
@@ -48,5 +47,3 @@ app.post("/formData", (req, res) => {
     );
   });
 });
-
-export const handler = ServerlessHttp(app);

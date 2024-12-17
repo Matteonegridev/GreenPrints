@@ -68,7 +68,7 @@ function FooterForm() {
 
     const payload = {
       id,
-      email: formData,
+      email: formData.email,
     };
 
     try {
