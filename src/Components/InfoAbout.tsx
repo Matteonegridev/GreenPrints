@@ -40,7 +40,7 @@ function InfoAbout() {
           <h1 className="font-titleText text-xl text-primary md:pt-2 xl:text-2xl dark:text-tertiary">
             {info.stat}
           </h1>
-          <small className="font-textBody mt-auto flex-grow-0 text-clearDark md:flex-grow md:place-content-center md:leading-none dark:text-white">
+          <small className="mt-auto flex-grow-0 font-textBody text-clearDark md:flex-grow md:place-content-center md:leading-none dark:text-white">
             {info.small}
           </small>
         </div>

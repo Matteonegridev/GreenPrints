@@ -5,20 +5,6 @@ import { motion, useCycle } from "framer-motion";
 import { useEffect, useState } from "react";
 import NavbarDesktop from "./NavbarDesktop";
 
-const menuItems = [
-  {
-    title: "Main Page",
-    href: "/",
-  },
-  {
-    title: "About Us",
-    href: "about",
-  },
-  {
-    title: "FAQ",
-    href: "faq",
-  },
-];
 const variantsNav = {
   open: {
     x: "0",
@@ -44,6 +30,21 @@ const variantsLi = {
 };
 
 function Navbar() {
+  const menuItems = [
+    {
+      title: "Main Page",
+      href: "/",
+    },
+    {
+      title: "About Us",
+      href: "about",
+    },
+    {
+      title: "FAQ",
+      href: "faq",
+    },
+  ];
+
   const [active, toggleActive] = useCycle(false, true);
   const mobileSize = window.innerWidth < 768;
   const [isMobile, setIsMobile] = useState(mobileSize);
@@ -71,7 +72,7 @@ function Navbar() {
             initial="closed"
             animate={active ? "open" : "closed"}
             variants={variantsNav}
-            className="font-subHeadings fixed -bottom-1 left-0 top-0 z-10 w-3/4 bg-primary"
+            className="fixed -bottom-1 left-0 top-0 z-10 w-3/4 bg-primary font-subHeadings"
             style={{
               boxShadow: active
                 ? "3px 0px 20px 5px rgba(0, 0, 0, 0.3)"
