@@ -56,10 +56,6 @@ function Navbar() {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  const handleClick = () => {
-    toggleActive(0);
-  };
-
   return (
     <>
       {isMobile ? (
@@ -91,7 +87,7 @@ function Navbar() {
                   className="border-b border-white py-6 text-3xl font-semibold text-white"
                 >
                   <Link
-                    onClick={handleClick}
+                    onClick={() => toggleActive()}
                     to={links.href}
                     key={i}
                     className="block w-[10ch]"
